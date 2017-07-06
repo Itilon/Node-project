@@ -7,7 +7,7 @@ const port = process.env.PORT || 3001;
 
 gulp.task('server', () => {
     const app = require('./app');
-    app.listen(port, () => console.log(`Server starts at ${port}`));
+    app.listen(port, () => console.log(`Server starts at :${port}`));
 });
 
 gulp.task('dev', ['server'], () => {
