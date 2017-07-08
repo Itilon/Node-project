@@ -6,8 +6,15 @@ const nodemon = require('gulp-nodemon');
 const port = process.env.PORT || 3001;
 
 gulp.task('server', () => {
-    const app = require('./app');
-    app.listen(port, () => console.log(`Server starts at :${port}`));
+    const async = () => {
+        return Promise.resolve();
+    };
+
+    async()
+        .then((data) => require('./app')(data))
+        .then((app) => {
+            app.listen(port, () => console.log(`Server starts at :${port}`));
+        });
 });
 
 gulp.task('dev', ['server'], () => {
