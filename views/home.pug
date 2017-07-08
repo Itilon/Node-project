@@ -9,7 +9,7 @@ block body
                 | Some text
             aside(class="col-sm-3")
                 form
-                    input(class="form-control" placeholder="Search")
+                    input(id="search" class="form-control" placeholder="Search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'")
                 div(class="aside-title")
                     h2
                         | Latest Posts
