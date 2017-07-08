@@ -1,5 +1,6 @@
 extends shared/_master
 include shared/_navigation
+include shared/_aside
 
 block body
     +navigation
@@ -7,13 +8,5 @@ block body
         div(class="row")
             main(class="col-sm-9")
                 | Some text
-            aside(class="col-sm-3")
-                form
-                    input(id="search" class="form-control" placeholder="Search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'")
-                div(class="aside-title")
-                    h2
-                        | Latest Posts
-                div(class="aside-title")
-                    h2
-                        | Categories
+            +aside
                     

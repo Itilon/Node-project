@@ -19,6 +19,18 @@ const attach = (app) => {
             res.render('home');
         })
 
+        .get('/about', (req, res) => {
+            res.render('about');
+        })
+
+        .get('/login', (req, res) => {
+            res.render('login');
+        })
+
+        .get('/contact', (req, res) => {
+            res.render('contact');
+        })
+
         .get('/all', (req, res) => {
             res.render('all', {
                 model: items,
