@@ -1,21 +1,19 @@
 extends shared/_master
+include shared/_navigation
 
 block body
-    header(id="header", class="container")
+    +navigation
+    div(id="main-content" class="container")
         div(class="row")
-            div(id="logo", class="col-sm-4")  
-                | Who's Blogging Platform
-            nav(id="right-header" class="col-sm-8")
-                ul(id="navigation" class="row")
-                    li(class="col-sm-3")
-                        a(class="home" href="#")
-                            | Home
-                    li(class="col-sm-3")
-                        a(href="#")
-                            | About
-                    li(class="col-sm-3")
-                        a(href="#")
-                            | Login
-                    li(class="col-sm-3 last")
-                        a(href="#")
-                            | Contact
+            main(class="col-sm-9")
+                | Some text
+            aside(class="col-sm-3")
+                form
+                    input(class="form-control" placeholder="Search")
+                div(class="aside-title")
+                    h2
+                        | Latest Posts
+                div(class="aside-title")
+                    h2
+                        | Categories
+                    

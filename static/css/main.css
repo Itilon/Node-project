@@ -2,40 +2,24 @@
     font-family: cognitype;
     src: url('../fonts/cognitype/cognitype.otf')
 }
-
 #main-body {
     background-color: #DFDFDF;
 }
-#header {
+#main-content {
     width: 72%;
     margin-top: 40px;
     margin-right: auto;
     margin-left: auto;
 }
-#right-header {
+div.aside-title {
     background-color: #F53F19;
+    border-radius: 4px;
 }
-#logo {
-    margin-top: 10px;
-    font-family: cognitype;
-    font-style: italic;
-}
-#navigation {
-    width: 100%;
-    margin-top: 10px;;
-}
-#navigation li {
-    list-style-type: none;
-    border-right: 1px solid #000000;
-    text-align: center;
-}
-#navigation li.last {
-    border-right: none;
-}
-#navigation li a {
-    font-weight: bold;
-    color: #000000;
-}
-#navigation li a.home {
+div.aside-title h2 {
     color: #FFFFFF;
+    font-weight: normal;
+    font-size: 20px;
+    padding-top: 6px;
+    padding-left: 6px;
+    padding-bottom: 6px;
 }
