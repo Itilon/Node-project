@@ -64,6 +64,7 @@ nav ul.cl-effect a:hover::after,
 nav ul.cl-effect a:focus::before,
 nav.cl-effect a:focus::after {
 	opacity: 1;
+    color: #000080;
 	-webkit-transform: translateX(0px);
 	-moz-transform: translateX(0px);
 	transform: translateX(0px);
