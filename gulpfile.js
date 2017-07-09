@@ -8,7 +8,7 @@ gulp.task('server', () => {
     };
 
     async()
-        //.then(() => require('db')(connectionString))
+        //.then(() => require('./db')(connectionString))
         //.then((db) => require('./data')(db))
         .then((data) => require('./app')(data))
         .then((app) => {
