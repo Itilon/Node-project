@@ -1,9 +1,6 @@
-/* globals process */
 const gulp = require('gulp');
 const nodemon = require('gulp-nodemon');
-
-// eslint-disable-next-line no-process-env
-const port = process.env.PORT || 3001;
+const { port, connectionString } = require('./app/config/config.port');
 
 gulp.task('server', () => {
     const async = () => {
@@ -11,6 +8,8 @@ gulp.task('server', () => {
     };
 
     async()
+        //.then(() => require('db')(connectionString))
+        //.then((db) => require('./data')(db))
         .then((data) => require('./app')(data))
         .then((app) => {
             app.listen(port, () => console.log(`Server starts at :${port}`));
