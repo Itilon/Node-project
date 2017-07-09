@@ -36,3 +36,33 @@
 #navigation li a.home {
     color: #FFFFFF;
 }
+nav ul.cl-effect a::before, nav ul.cl-effect a::after {
+    display: inline-block;
+	opacity: 0;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.2s;
+	transition: transform 0.3s, opacity 0.2s;
+}
+nav ul.cl-effect a::before {
+	margin-right: 10px;
+	content: '[';
+	-webkit-transform: translateX(20px);
+	-moz-transform: translateX(20px);
+	transform: translateX(20px);
+}
+nav ul.cl-effect a::after {
+	margin-left: 10px;
+	content: ']';
+	-webkit-transform: translateX(-20px);
+	-moz-transform: translateX(-20px);
+	transform: translateX(-20px);
+}
+nav ul.cl-effect a:hover::before,
+nav ul.cl-effect a:hover::after,
+nav ul.cl-effect a:focus::before,
+nav.cl-effect a:focus::after {
+	opacity: 1;
+	-webkit-transform: translateX(0px);
+	-moz-transform: translateX(0px);
+	transform: translateX(0px);
+}
