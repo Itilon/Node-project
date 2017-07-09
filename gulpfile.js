@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const nodemon = require('gulp-nodemon');
-const { port, connectionString } = require('./app/config/config.port');
+const { port, connectionString } = require('./app/config/port.config');
 
 gulp.task('server', () => {
     const async = () => {
