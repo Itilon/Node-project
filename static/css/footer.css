@@ -4,3 +4,8 @@ footer {
     margin-right: auto;
     margin-left: auto;
 }
+
+footer p {
+    font-family: cognitype;
+    text-align: center;
+}
