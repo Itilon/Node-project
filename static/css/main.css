@@ -19,6 +19,12 @@ div.thumbnail {
     position: relative;
     margin-bottom: 16px;
 }
+div.slide {
+    display: none;
+}
+#first-slide {
+    display: block;
+}
 div.caption {
     width: 100%;
     height: 50px;

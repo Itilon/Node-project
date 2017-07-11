@@ -1,5 +1,5 @@
 {
-  "name": "Node",
+  "name": "node",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -15,6 +15,7 @@
     "global": "^4.3.2",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
+    "jquery": "^3.2.1",
     "mongodb": "^2.2.30",
     "morgan": "^1.8.2",
     "pug": "^2.0.0-rc.2"
