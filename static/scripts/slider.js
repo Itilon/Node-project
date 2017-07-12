@@ -4,18 +4,14 @@ let index = 0;
 
 setInterval( () => {
     const slides = $('.slide');
-    let i;
 
-
-    for (i = 0; i < slides.length; i += 1) {
-        $(slides[i]).css('display', 'none');
-    }
+    $(slides[index]).hide(2000);
 
     index++;
 
-    if (index > slides.length) {
-        index = 1;
+    if (index === slides.length) {
+        index = 0;
     }
 
-    $(slides[index - 1]).css('display', 'block');
+    $(slides[index]).show(2000);
 }, 6000);
