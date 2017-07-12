@@ -5,7 +5,7 @@ let index = 0;
 setInterval( () => {
     const slides = $('.slide');
 
-    $(slides[index]).hide(2000);
+    $(slides[index]).slideUp(2400);
 
     index++;
 
@@ -13,5 +13,5 @@ setInterval( () => {
         index = 0;
     }
 
-    $(slides[index]).show(2000);
+    $(slides[index]).slideDown(2400);
 }, 6000);
