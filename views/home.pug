@@ -1,10 +1,7 @@
 extends shared/_master
-include shared/_navigation
 include shared/_aside
-include shared/_footer
 
 block body
-    +navigation
     div(id="main-content" class="container")
         div(class="row")
             main(class="col-sm-8")
@@ -27,5 +24,4 @@ block body
                 div(class="col-sm-6" style="border: 1px solid black")
                     | Some text
             +aside
-    +footer
                     

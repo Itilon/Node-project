@@ -18,4 +18,4 @@ setInterval( () => {
     }
 
     $(slides[index - 1]).css('display', 'block');
-}, 8000);
+}, 6000);
