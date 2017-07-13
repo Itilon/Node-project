@@ -26,7 +26,42 @@ aside ul {
 aside ul li {
     border-bottom: 1px dotted #000000;
 }
-aside ul li h3 {
-    font-size: 14px;
+div h3 a {
+    color: #000000;
     font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 14px;
+    transition: 0.8s all;
+	-webkit-transition: 0.8s all;
+	-moz-transition: 0.8s all;
+	-o-transition: 0.8s all;
+}
+div h3 a:link, div h3 a:visited {
+    color: #000000;
+    text-decoration: none;
+}
+div h3 a:hover {
+    color: #F53F1A;
+    text-decoration: none;
+}
+div.grid-wrapper {
+    display: table;
+}
+div.left-grid {
+    display: table-cell;
+    width: 40%;
+    vertical-align: middle;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+div.right-grid {
+    display: table-cell;
+    width: 60%;
+    padding-left: 8px;
+}
+img.img-fluid {
+    display: inline-block;
+    height: auto;
+    max-height: 100%;
+    width: 100%;
 }
