@@ -87,9 +87,52 @@ div.caption p {
     width: 80%;
     margin-left: 20px;
 }
-h2.form-title {
+
+/* Login page: */
+
+#login-page {
+    border: 1px solid #A9A9A9;
+}
+h2.form-title, h2.login-form-title {
     font-size: 18px;
     font-weight: bold;
+}
+h2.login-form-title {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+p.login-form-text {
+    margin-bottom: 40px;
+}
+#login-form input {
+    margin-bottom: 8px;
+}
+#login-form input:focus {
+    outline: none;
+    box-shadow: none;
+}
+label:nth-child(3) {
+    margin-top: 20px;
+}
+#login-form {
+    margin-left: 0;
+}
+.button {
+  background-color: #26313B;
+  color: #FFFFFF;
+  font-size: 14px;
+  border-radius: 4px;
+  outline: none;
+  margin-top: 20px;
+  padding: 8px 20px 6px 20px;
+  transition: 0.8s all;
+	-webkit-transition: 0.8s all;
+	-moz-transition: 0.8s all;
+	-o-transition: 0.8s all;
+  text-decoration: none;
+}
+.button:hover {
+  background: #f53f1a;
+  text-decoration: none;
 }
 
 /* On smaller screens: */
@@ -105,31 +148,5 @@ h2.form-title {
     }
 }
 
-#login-form input {
-    width: 50%;
-    margin-left: 20px;
-    margin-bottom: 8px;
-}
-#login-form textarea {
-    width: 80%;
-    margin-left: 20px;
-}
-
-.button {
-  background: #3498db;
-  background-image: linear-gradient(to bottom, #3498db, #2980b9);
-  border-radius: 15px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 15px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-}
-
-.button:hover {
-  background: #3cb0fd;
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-  text-decoration: none;
-}
 
 
