@@ -5,7 +5,7 @@
 #main-body {
     background-color: #DFDFDF;
 }
-#main-content, #contact-page, #about-page {
+#main-content, #contact-page, #about-page, #login-page {
     width: 72%;
     margin-top: 40px;
     margin-right: auto;
@@ -104,3 +104,32 @@ h2.form-title {
         width: 88%;
     }
 }
+
+#login-form input {
+    width: 50%;
+    margin-left: 20px;
+    margin-bottom: 8px;
+}
+#login-form textarea {
+    width: 80%;
+    margin-left: 20px;
+}
+
+.button {
+  background: #3498db;
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  border-radius: 15px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: #3cb0fd;
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+
