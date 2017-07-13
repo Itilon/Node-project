@@ -67,6 +67,9 @@ div.caption p {
 #left-col {
     border-left: 1px solid #A9A9A9;
 }
+
+/* About page: */
+
 #about-page, #contact-page {
     border: 1px dotted #000000;
 }
@@ -75,6 +78,9 @@ div.caption p {
     font-size: 24px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
+
+/* Contact page: */
+
 #form-title {
     margin-left: 20px;
 }
