@@ -1,6 +1,6 @@
-var passport = require('passport');
+const passport = require('passport');
 const cookieParser = require('cookie-parser');
-const session = require('express-session'); 
+const session = require('express-session');
 const { Strategy } = require('passport-local');
 
 

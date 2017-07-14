@@ -73,13 +73,28 @@ nav.cl-effect a:focus::after {
 
 /* On smaller screens: */
 
-@media (max-width: 1000px) {
+@media (max-width: 1040px) {
     #header {
         width: 80%;
     }
 }
+@media (max-width: 920px) {
+    #header {
+        width: 92%;
+    }
+}
 @media (max-width: 820px) {
     #header {
-        width: 88%;
+        width: 96%;
     }
+}
+@media (max-width: 780px) {
+    #header {
+        width: 98%;
+    }
+}
+@media (max-width: 768px) {
+   #navigation li {
+       border: none;
+   } 
 }
