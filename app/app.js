@@ -7,6 +7,11 @@ const init = (data) => {
     require('./config/app.config')(app);
     require('./config/auth.config')(app, userData);
 
+    //app.use((req, res, next) => {
+    //    console.log('---Current user---')
+    //    console.log(req.user);
+    //    next();
+    //});
 
     app.get('/404', (req, res) => {
         res.send('<h1>Error</h1>');
