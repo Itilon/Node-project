@@ -11,12 +11,11 @@ const attach = (app) => {
         .get('/:id', (req, res) => {
             const id = parseInt(req.params.id, 10);
             const item = items.find((i) => i.id === id);
-
             if (!item) {
                 return res
                     .status(404)
                     .send({
-                        error: 'not found',
+                        error: 'Page not found',
                     });
             }
             return res.send(item);
