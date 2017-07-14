@@ -15,12 +15,12 @@ block body
                     | REGISTERED USER
                 p(class="login-form-text")
                     | If you already have an account with us, please log in here!
-                form(id="login-form" class="form-group")
+                form(id="login-form" class="form-group" action="/login" method="post")
                     label(for="username")
                         | Username*
-                    input(id="username" class="form-control" type="text" placeholder="Enter your username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your username'")
+                    input(id="username" class="form-control" type="text" placeholder="Enter your username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your username'" name="username")
                     label(for="password")
                         | Password*
-                    input(id="password" class="form-control" type="password" placeholder="Enter your password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your password'")
-                    button(class="button" type="button") 
+                    input(id="password" class="form-control" type="password" placeholder="Enter your password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your password'" name="password")
+                    button(class="button" type="submit") 
                         | LOGIN
