@@ -6,36 +6,17 @@ mixin aside
             h2
                 | Latest Posts
         ul
-            li
-                div(class="grid-wrapper")
-                    div(class="left-grid")
-                        img(src="http://e-lect.net/wp-content/uploads/2015/06/Time-to-Get-Perfect.jpg" class="img-fluid")
-                    div(class="right-grid")
-                        h3
-                            a(href="/1")
-                                | First Article Title
-                        p
-                            | Some text
-            li
-                div(class="grid-wrapper")
-                    div(class="left-grid")
-                        img(src="http://e-lect.net/wp-content/uploads/2015/06/Smart-Training.jpg" class="img-fluid")
-                    div(class="right-grid")
-                        h3
-                            a(href="/2")
-                                | Second Article Title
-                        p
-                            | Some text
-            li
-                div(class="grid-wrapper")
-                    div(class="left-grid")
-                        img(src="http://e-lect.net/wp-content/uploads/2016/08/Millionaire.jpg" class="img-fluid")
-                    div(class="right-grid")      
-                        h3
-                            a(href="/3")
-                                | Third Article Title
-                        p
-                            | Some text  
+            each post in model
+                li
+                    div(class="grid-wrapper")
+                        div(class="left-grid")
+                            img(src=post.url class="img-fluid")
+                        div(class="right-grid")
+                            h3
+                                a(href=post.id)
+                                    =post.title
+                            p
+                                | Some text 
         div(class="aside-title")
             h2
                 | Categories
