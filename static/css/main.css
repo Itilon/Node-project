@@ -31,7 +31,7 @@ img.slide-img {
 div.slide {
     display: none;
 }
-#first-slide {
+div.slide:first-child {
     display: block;
 }
 div.caption {

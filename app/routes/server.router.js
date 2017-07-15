@@ -1,13 +1,16 @@
 const { Router } = require('express');
 
 const items = [{
-    name: 'Mira',
+    title: 'First Article Title',
+    url: 'http://e-lect.net/wp-content/uploads/2015/06/Time-to-Get-Perfect.jpg',
     id: 1,
 }, {
-    name: 'Viki',
+    title: 'Second Article Title',
+    url: 'http://e-lect.net/wp-content/uploads/2015/06/Smart-Training.jpg',
     id: 2,
 }, {
-    name: 'Ira',
+    title: 'Third Article Title',
+    url: 'http://e-lect.net/wp-content/uploads/2016/08/Millionaire.jpg',
     id: 3,
 }];
 
@@ -16,7 +19,9 @@ const attach = (app) => {
 
     router
         .get('/', (req, res) => {
-            res.render('home');
+            res.render('home', {
+                model: items,
+            });
         })
 
         .get('/about', (req, res) => {
