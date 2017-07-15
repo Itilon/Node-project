@@ -1,0 +1,14 @@
+extends shared/_master
+include shared/_aside
+
+block body
+    div(id="main-content" class="container")
+        div(class="row")
+            main(id="main-post" class="col-sm-8")
+                h1
+                    =model.title
+                img(src=model.url)
+                each paragraph in model.content
+                    p
+                        =paragraph
+            +aside()

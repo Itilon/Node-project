@@ -2,8 +2,8 @@ extends shared/_master
 
 block body
     ul
-        each item in model
+        each post in model
             li
-                a(href="/" + item.id)
-                    | Go to #{item.title}
+                a(href="/" + post.id)
+                    | Go to #{post.title}
         
