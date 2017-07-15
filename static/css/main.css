@@ -5,7 +5,7 @@
 #main-body {
     background-color: #DFDFDF;
 }
-#main-content, #contact-page, #about-page, #login-page {
+#main-content, #contact-page, #about-page, #login-page, #error-page {
     width: 72%;
     margin-top: 40px;
     margin-right: auto;
@@ -49,6 +49,13 @@ div.caption h2 {
     font-weight: bold;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     display: inline;
+    transition: 0.8s all;
+	-webkit-transition: 0.8s all;
+	-moz-transition: 0.8s all;
+	-o-transition: 0.8s all;
+}
+div.caption h2:hover {
+    color: #F53F1A;
 }
 div.caption p {
     color: #FFFFFF;
@@ -124,7 +131,7 @@ h2.form-title, h2.login-form-title {
 
 /* Login page: */
 
-#login-page {
+#login-page, #error-page {
     border: 1px solid #A9A9A9;
 }
 p.login-form-text {
@@ -162,10 +169,32 @@ label:nth-child(3) {
   text-decoration: none;
 }
 
+/* 404 page: */
+
+#error-page h1, #error-page p {
+    text-align: center;
+}
+#error-page h1 {
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+#error-page a {
+    display: block;
+    text-align: center;
+    width: 200px;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 40px;
+}
+#error-page a:hover {
+    color: #FFFFFF;
+}
+
 /* On smaller screens: */
 
 @media (max-width: 1040px) {
-    #main-content, #contact-page, #about-page {
+    #main-content, #contact-page, #about-page, #login-page, #error-page {
         width: 80%;
     }
     img.slide-img {
@@ -173,7 +202,7 @@ label:nth-child(3) {
     }
 }
 @media (max-width: 920px) {
-    #main-content, #contact-page, #about-page {
+    #main-content, #contact-page, #about-page, #login-page, #error-page {
         width: 92%;
     }
     img.slide-img {
@@ -181,12 +210,12 @@ label:nth-child(3) {
     }
 }
 @media (max-width: 820px) {
-    #main-content, #contact-page, #about-page {
+    #main-content, #contact-page, #about-page, #login-page, #error-page {
         width: 96%;
     }
 }
 @media (max-width: 780px) {
-    #main-content, #contact-page, #about-page {
+    #main-content, #contact-page, #about-page, #login-page, #error-page {
         width: 98%;
     }
 }

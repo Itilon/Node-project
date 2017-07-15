@@ -14,7 +14,7 @@ const init = (data) => {
     //});
 
     app.get('/404', (req, res) => {
-        res.send('<h1>Error</h1>');
+        res.render('404');
     });
 
     require('./routes')(app);

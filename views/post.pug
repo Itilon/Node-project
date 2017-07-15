@@ -6,9 +6,9 @@ block body
         div(class="row")
             main(id="main-post" class="col-sm-8")
                 h1
-                    =model.title
-                img(src=model.url)
-                each paragraph in model.content
+                    =post.title
+                img(src=post.url)
+                each paragraph in post.content
                     p
                         =paragraph
-            +aside()
+            +aside(model)
