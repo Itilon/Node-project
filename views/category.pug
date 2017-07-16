@@ -5,13 +5,17 @@ block body
     div(id="main-content" class="container")
         div(class="row")
             main(id="main-category" class="col-sm-8")
-                    each post in category
-                        div
+                div(id="category-header")
+                    h1
+                        =category[0].category
+                each post in category
+                    div
+                        a(href=post.id)
                             img(src=post.url class="img-responsive cat-img")
-                            h2
-                                a(href=post.id)
-                                    =post.title
-                            p
-                                =post.content[0]
+                        h2
+                            a(href=post.id)
+                                =post.title
+                        p
+                            =post.content[0]
             +aside(model)
         

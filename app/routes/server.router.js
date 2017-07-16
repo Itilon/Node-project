@@ -10,6 +10,8 @@ const posts = [{
     url: 'http://e-lect.net/wp-content/uploads/2015/06/Time-to-Get-Perfect.jpg',
     author: 'Pesho',
     category: 'Category 1',
+    date: 'July 16, 2017',
+    tags: ['lorem', 'ipsum', 'dolor'],
     id: 1,
 }, {
     title: 'Second Article Title',
@@ -21,6 +23,8 @@ const posts = [{
     url: 'http://e-lect.net/wp-content/uploads/2015/06/Smart-Training.jpg',
     author: 'Gosho',
     category: 'Category 2',
+    date: 'July 14, 2017',
+    tags: ['lorem', 'dolor'],
     id: 2,
 }, {
     title: 'Third Article Title',
@@ -32,6 +36,8 @@ const posts = [{
     url: 'http://e-lect.net/wp-content/uploads/2016/08/Millionaire.jpg',
     author: 'Sunny',
     category: 'Category 3',
+    date: 'July 12, 2017',
+    tags: ['lorem', 'ipsum'],
     id: 3,
 }, {
     title: 'Fourth Article Title',
@@ -43,6 +49,7 @@ const posts = [{
     url: 'http://e-lect.net/wp-content/uploads/2012/10/Slavery.jpg',
     author: 'Jani',
     category: 'Category 1',
+    date: 'July 16, 2017',
     id: 4,
 }];
 

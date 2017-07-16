@@ -5,10 +5,22 @@ block body
     div(id="main-content" class="container")
         div(class="row")
             main(id="main-post" class="col-sm-8")
+                div
+                    if post.tags
+                        p(id="tag-row")
+                            | Tagged with: 
+                            each tag in post.tags
+                                span
+                                    =tag + " "
                 h1
                     =post.title
                 img(src=post.url)
                 each paragraph in post.content
                     p
                         =paragraph
+                div
+                    p(id="bottom-row")
+                        =post.date
+                        span
+                            ="Article by: " + post.author
             +aside(model)
