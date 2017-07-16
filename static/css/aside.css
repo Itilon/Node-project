@@ -44,6 +44,9 @@ div h3 a:hover {
     color: #F53F1A;
     text-decoration: none;
 }
+h3.category a {
+    font-size: 20px;
+}
 div.grid-wrapper {
     display: table;
 }

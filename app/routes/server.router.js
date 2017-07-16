@@ -57,9 +57,20 @@ const attach = (app) => {
             res.render('contact');
         })
 
-        .get('/all', (req, res) => {
-            res.render('all', {
-                model: posts,
+        .get('/cat/:id', (req, res) => {
+            const category = req.params.id;
+            const categoryName = posts.find((i) => i.category === category);
+            if (!categoryName) {
+                return res.redirect('/404');
+            }
+            const categoryPosts = [];
+            posts.forEach((post) => {
+                if (post.category === category) {
+                    categoryPosts.push(post);
+                }
+            });
+            return res.render('category', {
+                model: categoryPosts,
             });
         })
 
