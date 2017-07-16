@@ -7,6 +7,7 @@ block body
             main(id="main-category" class="col-sm-8")
                     each post in category
                         div
+                            img(src=post.url class="img-responsive cat-img")
                             h2
                                 a(href=post.id)
                                     =post.title

@@ -50,9 +50,9 @@ div.caption h2 {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     display: inline;
     transition: 0.8s all;
-	-webkit-transition: 0.8s all;
-	-moz-transition: 0.8s all;
-	-o-transition: 0.8s all;
+	  -webkit-transition: 0.8s all;
+	  -moz-transition: 0.8s all;
+	  -o-transition: 0.8s all;
 }
 div.caption h2:hover {
     color: #F53F1A;
@@ -102,13 +102,33 @@ div.caption p {
 
 #main-category div {
     border-bottom: 1px dotted #000000;
-    margin-bottom: 12px;
+    margin-bottom: 24px;
 }
-
+#main-category div h2 a {
+    color: #000000;
+    transition: 0.8s all;
+	  -webkit-transition: 0.8s all;
+	  -moz-transition: 0.8s all;
+	  -o-transition: 0.8s all;
+}
+#main-category div h2 a:link, #main-category div h2 a:visisted {
+    color: #000000;
+    text-decoration: none;
+}
+#main-category div h2 a:hover {
+    color: #F53F1A;
+    text-decoration: none;
+}
 #main-category div p {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+img.cat-img {
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    border: 1px solid #A9A9A9;
 }
 
 /* About page: */
@@ -178,7 +198,7 @@ label:nth-child(3) {
   text-decoration: none;
 }
 .button:hover {
-  background: #f53f1a;
+  background: #F53f1A;
   text-decoration: none;
 }
 
