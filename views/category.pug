@@ -1,9 +1,16 @@
 extends shared/_master
+include shared/_aside
 
 block body
-    ul
-        each post in model
-            li
-                a(href="/" + post.id)
-                    | Go to #{post.title}
+    div(id="main-content" class="container")
+        div(class="row")
+            main(id="main-category" class="col-sm-8")
+                    each post in category
+                        div
+                            h2
+                                a(href=post.id)
+                                    =post.title
+                            p
+                                =post.content[0]
+            +aside(model)
         

@@ -81,7 +81,8 @@ const attach = (app) => {
                 }
             });
             return res.render('category', {
-                model: categoryPosts,
+                model: posts,
+                category: categoryPosts,
             });
         })
 
