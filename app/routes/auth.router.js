@@ -1,4 +1,4 @@
-var flash = require('connect-flash');
+const flash = require('connect-flash');
 const passport = require('passport');
 const { Router } = require('express');
 
@@ -10,10 +10,10 @@ const attach = (app) => {
         passport.authenticate('local', { 
         successRedirect: '/',
         failureRedirect: '/login',
-        failureFlash: true 
+        failureFlash: true,
         })
     );
-    
+
     app.use(flash());
     app.use('/', router);
 };
