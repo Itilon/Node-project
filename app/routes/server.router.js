@@ -82,19 +82,20 @@ const attach = (app) => {
             if (!post) {
                 id = req.params.id;
                 post = posts.find((i) => i.category === id);
+
                 if (!post) {
                     return res.redirect('/404');
                 }
                 const categoryPosts = [];
                 posts.forEach((catPost) => {
-                if (catPost.category === id) {
-                    categoryPosts.push(catPost);
-                }
-            });
-            return res.render('category', {
-                model: posts,
-                category: categoryPosts,
-            });
+                    if (catPost.category === id) {
+                        categoryPosts.push(catPost);
+                    }
+                });
+                return res.render('category', {
+                    model: posts,
+                    category: categoryPosts,
+                });
             }
             return res.render('post', {
                 model: posts,
