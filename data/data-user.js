@@ -15,9 +15,9 @@ const users = {
         const user = userList.find((u) => u.id === id);
         return new Promise((resolve, reject) => {
             if (!user) {
-                return reject('No such User');
+                reject('No such User');
             } else {
-                return resolve(user);
+                resolve(user);
             }
         });
     },
@@ -27,9 +27,9 @@ const users = {
         const user = userList.find((u) => u.username.toLowerCase() === usernameToLower);
         return new Promise((resolve, reject) => {
             if (!user) {
-                return reject('No such User');
+                reject('No such User');
             } else {
-                return resolve(user);
+                resolve(user);
             }
         });
     }
