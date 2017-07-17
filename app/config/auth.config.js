@@ -21,7 +21,7 @@ const configAuth = (app, { users }) => {
     app.use(session({
         secret: 'keyboard cat',
         resave: true,
-        saveUninitialized: true
+        saveUninitialized: true,
     }));
     app.use(passport.initialize());
     app.use(passport.session());
