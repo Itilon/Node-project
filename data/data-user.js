@@ -24,7 +24,8 @@ const users = {
 
     findByUsername(username) {
         const usernameToLower = username.toLowerCase();
-        const user = userList.find((u) => u.username.toLowerCase() === usernameToLower);
+        const user = userList.find((u) => u.username
+            .toLowerCase() === usernameToLower);
         return new Promise((resolve, reject) => {
             if (!user) {
                 reject('No such User');
@@ -32,9 +33,9 @@ const users = {
                 resolve(user);
             }
         });
-    }
-}
+    },
+};
 
 module.exports = {
     users,
-}
+};
