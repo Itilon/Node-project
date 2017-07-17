@@ -75,30 +75,26 @@ const attach = (app) => {
             res.render('contact');
         })
 
-        .get('/cat/:id', (req, res) => {
-            const category = req.params.id;
-            const categoryName = posts.find((i) => i.category === category);
-            if (!categoryName) {
-                return res.redirect('/404');
-            }
-            const categoryPosts = [];
-            posts.forEach((post) => {
-                if (post.category === category) {
-                    categoryPosts.push(post);
+        .get('/:id', (req, res) => {
+            let id = parseInt(req.params.id, 10);
+            const post = posts.find((i) => i.id === id);
+
+            if (!post) {
+                id = req.params.id;
+                const categoryName = posts.find((i) => i.category === id);
+                if (!categoryName) {
+                    return res.redirect('/404');
+                }
+                const categoryPosts = [];
+                posts.forEach((cat) => {
+                if (cat.category === id) {
+                    categoryPosts.push(cat);
                 }
             });
             return res.render('category', {
                 model: posts,
                 category: categoryPosts,
             });
-        })
-
-        .get('/:id', (req, res) => {
-            const id = parseInt(req.params.id, 10);
-            const post = posts.find((i) => i.id === id);
-
-            if (!post) {
-                return res.redirect('/404');
             }
             return res.render('post', {
                 model: posts,
