@@ -17,22 +17,7 @@ const init = (data) => {
         res.render('404');
     });
 
-    require('./routes')(app);
-
-    app.get('/items', (req, res) => {
-        return data.items.getAll()
-            .then((items) => {
-                return res.render('items/all', {
-                    model: items,
-                });
-            });
-    });
-
-    app.post('/items', (req, res) => {
-        const item = req.body;
-        return data.items.create(item)
-            .then((dbitem) => res.redirect('/items/' + dbitem.id));
-    });
+    require('./routes')(app, data);
 
     return Promise.resolve(app);
 };

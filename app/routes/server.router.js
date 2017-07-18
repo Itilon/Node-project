@@ -53,7 +53,7 @@ const posts = [{
     id: 4,
 }];
 
-const attach = (app) => {
+const attach = (app, data) => {
     const router = new Router();
 
     router
@@ -73,6 +73,21 @@ const attach = (app) => {
 
         .get('/contact', (req, res) => {
             res.render('contact');
+        })
+
+        .get('/items', (req, res) => {
+            return data.items.getAll()
+                .then((items) => {
+                    return res.render('items/all', {
+                        model: items,
+                    });
+                });
+        })
+
+        .post('/items', (req, res) => {
+            const item = req.body;
+            return data.items.create(item)
+                .then((dbitem) => res.redirect('/items/' + dbitem.id));
         })
 
         .get('/:id', (req, res) => {
