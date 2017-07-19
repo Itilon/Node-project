@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+
 const { port, connectionString } = require('./app/config/port.config');
 
 const async = () => {
@@ -12,3 +13,4 @@ async()
         .then((app) => {
             app.listen(port, () => console.log(`Server starts at :${port}`));
         });
+

@@ -3,6 +3,10 @@ const nodemon = require('gulp-nodemon');
 const istanbul = require('gulp-istanbul');
 const mocha = require('gulp-mocha');
 
+gulp.task('server', () => {
+    return require('./server');
+});
+
 gulp.task('dev', () => {
     return nodemon({
         ext: 'js',
