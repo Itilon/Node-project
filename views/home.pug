@@ -4,7 +4,7 @@ include shared/_aside
 block body
     div(id="main-content" class="container")
         div(class="row")
-            main(class="col-sm-8")
+            main(id="main-page" class="col-sm-8")
                 each post in model
                     div(class="thumbnail slide")
                         a(href=post.id)

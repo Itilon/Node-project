@@ -9,7 +9,7 @@ main {
     margin-bottom: 12px;
 }
 #main-content, #contact-page, #about-page, #login-page, #error-page {
-    width: 72%;
+    width: 76%;
     margin-top: 40px;
     margin-right: auto;
     margin-left: auto;
@@ -250,9 +250,9 @@ label:nth-child(3) {
 
 /* On smaller screens: */
 
-@media (max-width: 1040px) {
+@media (max-width: 1140px) {
     #main-content, #contact-page, #about-page, #login-page, #error-page {
-        width: 80%;
+        width: 88%;
     }
     img.slide-img {
         height: 360px !important;
@@ -274,6 +274,11 @@ label:nth-child(3) {
 @media (max-width: 780px) {
     #main-content, #contact-page, #about-page, #login-page, #error-page {
         width: 98%;
+    }
+    #main-page {
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
     }
 }
 

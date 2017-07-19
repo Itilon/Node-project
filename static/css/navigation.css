@@ -1,5 +1,5 @@
 #header {
-    width: 72%;
+    width: 76%;
     margin-top: 40px;
     margin-right: auto;
     margin-left: auto;
@@ -12,9 +12,15 @@
     font-family: cognitype;
     font-style: italic;
 }
+#logo a {
+    color: #000000;
+}
+#logo a:hover {
+    text-decoration: none;
+}
 #navigation {
     width: 100%;
-    margin-top: 10px;;
+    margin-top: 10px;
 }
 #navigation li {
     list-style-type: none;
@@ -73,9 +79,9 @@ nav.cl-effect a:focus::after {
 
 /* On smaller screens: */
 
-@media (max-width: 1040px) {
+@media (max-width: 1140px) {
     #header {
-        width: 80%;
+        width: 88%;
     }
 }
 @media (max-width: 920px) {
@@ -94,7 +100,48 @@ nav.cl-effect a:focus::after {
     }
 }
 @media (max-width: 768px) {
-   #navigation li {
-       border: none;
-   } 
+    #header {
+        margin-top: 12px;
+    }
+    #logo {
+        width: 80%;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 20px;
+    }
+    #logo a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 24px;
+    }
+    #right-header {
+        background-color: #26313B;
+    }
+    #navigation li {
+        border: none;
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
+    #navigation li a {
+        color: #FFFFFF;
+        font-size: 14px;
+        font-weight: normal;
+    }
+    nav ul.cl-effect a:hover::before,
+    nav ul.cl-effect a:hover::after,
+    nav ul.cl-effect a:focus::before,
+    nav.cl-effect a:focus::after {
+        color: #FFFFFF;
+    }
+}
+@media (max-width: 458px) {
+    #logo a {
+        font-size: 20px;
+    }
+}
+@media (max-width: 394px) {
+    #logo a {
+        font-size: 14px;
+    }
 }
