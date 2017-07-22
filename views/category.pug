@@ -7,15 +7,15 @@ block body
             main(id="main-category" class="col-sm-8")
                 div(id="category-header")
                     h1
-                        =category[0].category
-                each post in category
+                        =category.name
+                each article in category.articles
                     div
-                        a(href=post.id)
-                            img(src=post.url class="img-responsive cat-img")
+                        a(href=article._id)
+                            img(src=article.url class="img-responsive cat-img")
                         h2
-                            a(href=post.id)
-                                =post.title
+                            a(href=article._id)
+                                =article.title
                         p
-                            =post.content[0]
-            +aside(model)
+                            =article.content
+            +aside(model, categories)
         

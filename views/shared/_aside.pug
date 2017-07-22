@@ -21,11 +21,8 @@ mixin aside
             h2
                 | Categories
         ul
-            - var categoryArr = []
-            each post in model
-                if categoryArr.indexOf(post.category) == -1
-                    - categoryArr.push(post.category)
+            each category in categories
                         li
                             h3(class="category")
-                                a(href=post.category)
-                                    = "|| " + post.category
+                                a(href=category._id)
+                                    = "|| " + category.name

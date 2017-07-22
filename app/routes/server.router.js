@@ -7,9 +7,13 @@ const attach = (app, data) => {
         .get('/', (req, res) => {
             return data.items.getAll()
                 .then((items) => {
-                    return res.render('home', {
-                        model: items,
-                    });
+                    return data.categories.getAll()
+                        .then((categories) => {
+                            res.render('home', {
+                                model: items,
+                                categories: categories,
+                            });
+                        });
                 });
         })
 
@@ -45,7 +49,24 @@ const attach = (app, data) => {
             return data.items.findById(id)
                 .then((post) => {
                     if (!post) {
-                        return res.redirect('/404');
+                        return data.categories.findById(id)
+                            .then((category) => {
+                                if (!category) {
+                                    return res.redirect('/404');
+                                }
+                            
+                                return data.categories.getAll()
+                                    .then((categories) => {
+                                        return data.items.getAll()
+                                            .then((items) => {
+                                                res.render('category', {
+                                                    category: category,
+                                                    model: items,
+                                                    categories: categories,
+                                                });
+                                            });
+                                    });
+                            });
                     }
 
                     return data.items.getAll()
@@ -56,26 +77,8 @@ const attach = (app, data) => {
                             });
                         });
                 });
-
-            /* if (!post) {
-                id = req.params.id;
-                post = posts.find((i) => i.category === id);
-
-                if (!post) {
-                    return res.redirect('/404');
-                }
-                const categoryPosts = [];
-                posts.forEach((catPost) => {
-                    if (catPost.category === id) {
-                        categoryPosts.push(catPost);
-                    }
-                });
-                return res.render('category', {
-                    model: posts,
-                    category: categoryPosts,
-                });
-            } */
         });
+
     app.use('/', router);
 };
 
