@@ -1,3 +1,5 @@
+const { ObjectID } = require('mongodb');
+
 class BaseData {
     constructor(db, modelClass) {
         this.db = db;
@@ -10,6 +12,12 @@ class BaseData {
         return this.collection.find(props)
             .toArray();
     }
+
+    findById(id) {
+        return this.collection.findOne({
+            _id: new ObjectID(id),
+        });
+}
 
     getAll() {
         const filter = {};

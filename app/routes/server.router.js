@@ -92,7 +92,7 @@ const attach = (app, data) => {
 
         .get('/:id', (req, res) => {
             let id = parseInt(req.params.id, 10);
-            let post = posts.find((i) => i.id === id);
+            let post = data.items.findById(id);
 
             if (!post) {
                 id = req.params.id;
@@ -112,10 +112,13 @@ const attach = (app, data) => {
                     category: categoryPosts,
                 });
             }
-            return res.render('post', {
-                model: posts,
-                post: post,
-            });
+            return Promise.resolve()
+                .then(() => {
+                    return res.render('post', {
+                        model: posts,
+                        post: post,
+                    });
+                });
         });
     app.use('/', router);
 };
