@@ -7,7 +7,7 @@ block body
             main(id="main-page" class="col-sm-8")
                 each post in model
                     div(class="thumbnail slide")
-                        a(href=post.id)
+                        a(href=post._id)
                             img(src=post.url class="img-responsive slide-img")
                             div(class="caption")
                                 h2

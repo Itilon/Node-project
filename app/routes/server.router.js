@@ -58,9 +58,12 @@ const attach = (app, data) => {
 
     router
         .get('/', (req, res) => {
-            res.render('home', {
-                model: posts,
-            });
+            return data.items.getAll()
+                .then((items) => {
+                    return res.render('home', {
+                        model: items,
+                    });
+                });
         })
 
         .get('/about', (req, res) => {
@@ -91,10 +94,23 @@ const attach = (app, data) => {
         })
 
         .get('/:id', (req, res) => {
-            let id = parseInt(req.params.id, 10);
-            let post = data.items.findById(id);
+            const id = req.params.id;
+            return data.items.findById(id)
+                .then((post) => {
+                    if (!post) {
+                        return res.redirect('/404');
+                    }
 
-            if (!post) {
+                    return data.items.getAll()
+                        .then((items) => {
+                            res.render('post', {
+                                model: items,
+                                post: post,
+                            });
+                        });
+                });
+
+            /* if (!post) {
                 id = req.params.id;
                 post = posts.find((i) => i.category === id);
 
@@ -111,14 +127,7 @@ const attach = (app, data) => {
                     model: posts,
                     category: categoryPosts,
                 });
-            }
-            return Promise.resolve()
-                .then(() => {
-                    return res.render('post', {
-                        model: posts,
-                        post: post,
-                    });
-                });
+            } */
         });
     app.use('/', router);
 };
