@@ -6,11 +6,13 @@ block body
             div(class="col-sm-6")
                 h2(id="form-title" class="form-title")
                     | CONTACT FORM
-                form(id="contact-form" class="form-group")
-                    input(class="form-control" type="text" placeholder="Name")
-                    input(class="form-control" type="email" placeholder="E-mail Address")
-                    input(class="form-control" type="text" placeholder="Subject")
-                    textarea(class="form-control" placeholder="Message")
+                form(id="contact-form" class="form-group" method="post")
+                    input(class="form-control" type="text" placeholder="Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Name'" name="name")
+                    input(class="form-control" type="email" placeholder="E-mail Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail Address'" name="e-mail address")
+                    input(class="form-control" type="text" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'" name="subject")
+                    textarea(class="form-control" placeholder="Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Message'" name="message")
+                    button(class="button" type="submit") 
+                        | Submit
             div(class="col-sm-6")
                 h2(class="form-title")
                     | CONTACT INFORMATION

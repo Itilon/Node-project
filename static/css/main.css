@@ -180,6 +180,10 @@ img.cat-img {
     width: 80%;
     margin-left: 20px;
 }
+#contact-form button {
+    margin-top: 8px;
+    margin-left: 20px;
+}
 h2.form-title, h2.login-form-title {
     font-size: 18px;
     font-weight: bold;
