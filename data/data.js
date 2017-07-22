@@ -1,8 +1,8 @@
-const ItemsData = require('./items.data');
+const PostsData = require('./posts.data');
 
 const init = (db) => {
     return Promise.resolve({
-        items: new ItemsData(db),
+        items: new PostsData(db),
     });
 };
 

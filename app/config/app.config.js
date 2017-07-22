@@ -18,7 +18,8 @@ const configApp = (app) => {
     app.use('/libs', express.static(
         path.join(__dirname, '../../node_modules'))
     );
-    // custom middleware
+
+    // Custom middleware:
     app.use((req, res, done) => {
         const start = new Date();
 
