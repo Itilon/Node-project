@@ -71,10 +71,14 @@ const attach = (app, data) => {
 
                     return data.items.getAll()
                         .then((items) => {
-                            res.render('post', {
-                                model: items,
-                                post: post,
-                            });
+                            return data.categories.getAll()
+                                .then((categories) => {
+                                    res.render('post', {
+                                        post: post,
+                                        model: items,
+                                        categories: categories,
+                                    });
+                                });
                         });
                 });
         });
