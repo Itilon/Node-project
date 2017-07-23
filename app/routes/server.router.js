@@ -54,7 +54,6 @@ const attach = (app, data) => {
                                 if (!category) {
                                     return res.redirect('/404');
                                 }
-                            
                                 return data.categories.getAll()
                                     .then((categories) => {
                                         return data.items.getAll()
