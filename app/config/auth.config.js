@@ -7,7 +7,10 @@ const { Strategy } = require('passport-local');
 const configAuth = (app, { users }) => {
     passport.use(new Strategy(
         (username, password, done) => {
-            return users.findByUsername(username, password)
+            return users.checkPassword(username, password)
+                .then(() => {
+                    return users.findByUsername(username);
+                })
                 .then((user) => {
                     return done(null, user);
                 })
@@ -27,7 +30,7 @@ const configAuth = (app, { users }) => {
     app.use(passport.session());
 
     passport.serializeUser((user, done) => {
-        done(null, user.id);
+        done(null, user._id);
     });
 
     passport.deserializeUser((id, done) => {

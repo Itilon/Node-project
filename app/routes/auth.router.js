@@ -8,11 +8,11 @@ const attach = (app) => {
     router
         .post('/login',
             passport.authenticate('local', {
-                successRedirect: '/',
                 failureRedirect: '/login',
                 failureFlash: true,
-        })
-    );
+        }), (req, res) => {
+            res.redirect('/');
+        });
 
     app.use(flash());
     app.use('/', router);
