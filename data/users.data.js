@@ -29,7 +29,7 @@ class UsersData extends BaseData {
         });
     }
 
-    findByUsername(username) {
+    findByUsername(username, password) {
         const usernameToLower = username.toLowerCase();
         const user = userList.find((u) => u.username
             .toLowerCase() === usernameToLower);
@@ -37,23 +37,12 @@ class UsersData extends BaseData {
             if (!user) {
                 reject('No such User');
             } else {
+            if (password === user.password) {
                 resolve(user);
+            } else {
+                reject('Wrong username or password');
             }
-        });
-    }
-
-    checkPassword(username, password) {
-        this.collection.findOne({
-            username,
-        })
-        .then((user) => {
-            if (!user) {
-                throw Error('No such user');
             }
-            if (user.password !== password) {
-                throw Error('Invalid password');
-            }
-            return true;
         });
     }
 }

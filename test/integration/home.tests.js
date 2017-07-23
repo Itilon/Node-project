@@ -134,20 +134,20 @@ describe('GET /2 - second post', () => {
         });
     });
 
-    describe('GET Invalid route to redirect', () => {
-        it('expect to return 302', (done) => {
-            request(app)
-                .get('/contanct1')
-                .expect(302)
-                .end((err, res) => {
-                    if (err) {
-                        return done(err);
-                    }
+   describe('GET Invalid route to redirect', () => {
+       it('expect to return 302', (done) => {
+           request(app)
+               .get('/contanct1')
+               .expect(302)
+               .end((err, res) => {
+                   if (err) {
+                       return done(err);
+                   }
 
-                    return done();
-                });
-        });
-    });
+                   return done();
+               });
+       });
+   });
 
     describe('GET /404', () => {
         it('expect to return 200', (done) => {

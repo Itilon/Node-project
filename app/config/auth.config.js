@@ -7,7 +7,7 @@ const { Strategy } = require('passport-local');
 const configAuth = (app, { users }) => {
     passport.use(new Strategy(
         (username, password, done) => {
-            return users.findByUsername(username)
+            return users.findByUsername(username, password)
                 .then((user) => {
                     return done(null, user);
                 })

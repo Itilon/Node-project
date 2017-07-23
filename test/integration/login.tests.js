@@ -28,4 +28,19 @@ describe('/login tests', () => {
                 });
         });
     });
+    describe('POST /login', () => {
+        it('expect to return 302', (done) => {
+            request(app)
+                .post('/login')
+                .send({ username: 'Gosho', password: '1' })
+                .expect(302)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+    });
 });
