@@ -21,6 +21,8 @@ const attach = (app, data) => {
         .post('/dashboard', (req, res) => {
             const post = req.body;
 
+            post.content = post.content.split('\r\n');
+
             return data.items.create(post)
                 .then((dbItem) => {
                     console.log(dbItem);
