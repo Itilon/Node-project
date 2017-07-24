@@ -11,7 +11,7 @@ const attach = (app, data) => {
                 failureRedirect: '/login',
                 failureFlash: true,
         }), (req, res) => {
-            res.redirect(`/dashboard/:${req.user._id}`);
+            res.redirect(`/dashboard/${req.user._id}`);
         })
 
         .get('/dashboard/:id', (req, res) => {
