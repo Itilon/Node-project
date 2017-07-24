@@ -21,6 +21,13 @@ const attach = (app, data) => {
             res.render('dashboard');
         })
 
+        .get('/editor', (req, res) => {
+            if (!req.isAuthenticated()) {
+                res.redirect('404');
+            }
+            res.render('editor');
+        })
+
         .post('/dashboard', (req, res) => {
             const post = req.body;
 
