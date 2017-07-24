@@ -2,7 +2,7 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const { Router } = require('express');
 
-const attach = (app) => {
+const attach = (app, data) => {
     const router = new Router();
 
     router
@@ -16,6 +16,15 @@ const attach = (app) => {
 
         .get('/dashboard/:id', (req, res) => {
             res.render('dashboard');
+        })
+
+        .post('/dashboard', (req, res) => {
+            const post = req.body;
+
+            return data.items.create(post)
+                .then((dbItem) => {
+                    console.log(dbItem);
+                });
         });
 
     app.use(flash());
