@@ -15,6 +15,9 @@ const attach = (app, data) => {
         })
 
         .get('/dashboard/:id', (req, res) => {
+            if (!req.isAuthenticated()) {
+                res.redirect('/404');
+            }
             res.render('dashboard');
         })
 
