@@ -1,8 +1,9 @@
 div
-        form(action="/dashboard" method='post')
+        form(action="/dashboard" method='post' enctype="multipart/form-data")
             input(name="title" placeholder="Title" style="display:block")
             input(name="categories" placeholder="Categories" style="display:block")
             input(name="tags" placeholder="Tags" style="display:block")
             textarea(name="content" placeholder="Text" style="display:block")
+            input(type="file" name="file")
             button(type="submit")
                 | Submit

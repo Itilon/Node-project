@@ -2,6 +2,7 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const { Router } = require('express');
 
+
 const attach = (app, data) => {
     const router = new Router();
 
@@ -30,6 +31,9 @@ const attach = (app, data) => {
 
         .post('/dashboard', (req, res) => {
             const post = req.body;
+            const file = req.files.file;
+
+            file.mv('./uploads/'+file.name);
 
             post.content = post.content.split('\r\n');
 
