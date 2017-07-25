@@ -17,7 +17,7 @@ const attach = (app, data) => {
 
         .get('/dashboard/:id', (req, res) => {
             if (!req.isAuthenticated()) {
-                res.redirect('/404');
+                res.redirect('404');
             }
             const user = req.user;
 
