@@ -1,17 +1,6 @@
-extends shared/_authmaster
+extends shared/_dashmaster
 
 block body
-    header(id="head-section" class="container")
-        div(class="row")
-            div(class="col-sm-4")
-                h1
-                    | Welcome, User!
-            div(class="col-sm-4")
-                form(id="search-form")
-                    input(id="search" class="form-control" placeholder="Search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'")
-            div(class="col-sm-4")
-                h2 
-                    | My Account
     main
         a(href="/editor")
             | Go to editor

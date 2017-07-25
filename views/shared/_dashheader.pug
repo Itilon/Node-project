@@ -1,0 +1,22 @@
+mixin dashheader
+    header(id="head-section" class="container")
+        div(class="row")
+            div(class="col-sm-5")
+                h1(id="logo")
+                    a(href="#")
+                        | Welcome, User!
+            div(class="col-sm-5")
+                form(id="search-form")
+                    input(id="search" class="form-control" placeholder="Search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'")
+            div(class="col-sm-2")
+                div(id="dropdown" class="dropdown")
+                    a(href="#" class="dropdown-toggle" data-toggle="dropdown")
+                        | My Account
+                        span(class="caret")
+                    ul(id="dropdown-menu" class="dropdown-menu")
+                        li
+                            a(href="#")
+                                | Profile
+                        li
+                            a(href="#")
+                                | Logout

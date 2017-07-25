@@ -1,0 +1,46 @@
+@font-face {
+    font-family: cognitype;
+    src: url('../fonts/cognitype/cognitype.otf')
+}
+#main-body {
+    background-color: #EFF0F3;
+}
+#head-section {
+    width: 100%;
+    background-color: #26313B;
+}
+#logo {
+    font-size: 24px;
+    font-family: cognitype;
+    margin-top: 20px;
+    margin-left: 60px;
+    margin-bottom: 4px;
+}
+#logo a {
+    color: #FFFFFF;
+}
+#logo a:link, #logo a:visited {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+#logo a:hover {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+#search-form {
+    width: 240px;
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+#dropdown {
+    margin-top: 16px;
+    text-align: center;
+}
+#dropdown a {
+    font-size: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+#dropdown-menu li a {
+    color: #000000;
+}
