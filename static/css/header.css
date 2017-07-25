@@ -11,13 +11,17 @@
 }
 #logo a {
     color: #FFFFFF;
+    transition: 4s all;
+	  -webkit-transition: 4s all;
+	  -moz-transition: 4s all;
+	  -o-transition: 4s all;
 }
 #logo a:link, #logo a:visited {
     color: #FFFFFF;
     text-decoration: none;
 }
 #logo a:hover {
-    color: #FFFFFF;
+    color: #F53F1A;
     text-decoration: none;
 }
 #search-form {
@@ -33,6 +37,13 @@
     font-size: 16px;
     color: #FFFFFF;
     text-decoration: none;
+    transition: 4s all;
+	  -webkit-transition: 4s all;
+	  -moz-transition: 4s all;
+	  -o-transition: 4s all;
+}
+#dropdown a:hover {
+    color: #F53F1A;
 }
 #dropdown-menu li a {
     color: #000000;

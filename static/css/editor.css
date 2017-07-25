@@ -5,3 +5,24 @@
 #main-body {
     background-color: #EFF0F3;
 }
+#editor {
+    margin-top: 36px;
+    border: 1px solid #EEEEEE;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+}
+#title {
+    width: 80%;
+    margin-top: 24px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 24px;
+}
+textarea {
+    width: 80%;
+    height: 360px;
+    margin-top: 24px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 24px;
+}

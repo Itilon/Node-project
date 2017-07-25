@@ -19,21 +19,37 @@ const attach = (app, data) => {
             if (!req.isAuthenticated()) {
                 res.redirect('/404');
             }
-            res.render('dashboard');
+            const user = req.user;
+
+            res.render('dashboard', {
+                user: user,
+            });
         })
 
         .get('/editor', (req, res) => {
             if (!req.isAuthenticated()) {
                 res.redirect('404');
             }
-            res.render('editor');
+            const user = req.user;
+
+            res.render('editor', {
+                user: user,
+            });
+        })
+
+        .get('/logout', (req, res) => {
+            if (!req.isAuthenticated()) {
+                res.redirect('404');
+            }
+            req.logout();
+            res.redirect('login');
         })
 
         .post('/dashboard', (req, res) => {
             const post = req.body;
             const file = req.files.file;
 
-            file.mv('./uploads/'+file.name);
+            file.mv('./uploads/' + file.name);
 
             post.content = post.content.split('\r\n');
 

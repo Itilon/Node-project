@@ -4,7 +4,7 @@ mixin dashheader
             div(class="col-sm-5")
                 h1(id="logo")
                     a(href="#")
-                        | Welcome, User!
+                        ="Welcome " + user.username + "!"
             div(class="col-sm-5")
                 form(id="search-form")
                     input(id="search" class="form-control" placeholder="Search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'")
@@ -18,5 +18,5 @@ mixin dashheader
                             a(href="#")
                                 | Profile
                         li
-                            a(href="#")
+                            a(href="/logout")
                                 | Logout

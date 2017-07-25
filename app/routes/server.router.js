@@ -52,7 +52,7 @@ const attach = (app, data) => {
                         return data.categories.findById(id)
                             .then((category) => {
                                 if (!category) {
-                                    return res.redirect('/404');
+                                    return res.redirect('404');
                                 }
                                 return data.categories.getAll()
                                     .then((categories) => {
