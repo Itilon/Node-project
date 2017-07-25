@@ -1,6 +1,7 @@
 extends shared/_dashmaster
+include shared/_editor_navigation
 
 block body
-    main
-        a(href="/editor")
-            | Go to editor
+    main(class="row")
+        +editor_navigation
+        div(class="col-sm-10")

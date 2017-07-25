@@ -1,10 +1,3 @@
-@font-face {
-    font-family: cognitype;
-    src: url('../fonts/cognitype/cognitype.otf')
-}
-#main-body {
-    background-color: #EFF0F3;
-}
 #head-section {
     width: 100%;
     background-color: #26313B;
@@ -12,9 +5,9 @@
 #logo {
     font-size: 24px;
     font-family: cognitype;
-    margin-top: 20px;
+    margin-top: 12px;
     margin-left: 60px;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
 }
 #logo a {
     color: #FFFFFF;

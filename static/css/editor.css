@@ -1,0 +1,7 @@
+@font-face {
+    font-family: cognitype;
+    src: url('../fonts/cognitype/cognitype.otf')
+}
+#main-body {
+    background-color: #EFF0F3;
+}
