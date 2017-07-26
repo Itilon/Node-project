@@ -5,8 +5,10 @@
 #main-body {
     background-color: #EFF0F3;
 }
-#editor, #cat-form, #tag-form {
+#editor {
     margin-top: 36px;
+    margin-right: 60px;
+    margin-bottom: 20px;
     border: 1px solid #EEEEEE;
     border-radius: 8px;
     background-color: #FFFFFF;
