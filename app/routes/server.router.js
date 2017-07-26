@@ -4,6 +4,12 @@ const attach = (app, data) => {
     const router = new Router();
 
     router
+
+        // Catching favicon request:
+        .get('/favicon.ico', function(req, res) {
+            res.status(204);
+        })
+
         .get('/', (req, res) => {
             return data.items.getAll()
                 .then((items) => {
@@ -46,6 +52,7 @@ const attach = (app, data) => {
 
         .get('/:id', (req, res) => {
             const id = req.params.id;
+            console.log(req.params);
             return data.items.findById(id)
                 .then((post) => {
                     if (!post) {
