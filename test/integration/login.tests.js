@@ -1,8 +1,9 @@
 const request = require('supertest');
 
 describe('/login tests', () => {
-    const connectionString = 'mongodb://localhost/db-test';
+    const connectionString = 'mongodb://localhost/test-db';
     let app = null;
+
 
     beforeEach(() => {
         return Promise.resolve()
@@ -14,7 +15,7 @@ describe('/login tests', () => {
             });
     });
 
- describe('GET /login', () => {
+    describe('GET /login', () => {
         it('expect to return 200', (done) => {
             request(app)
                 .get('/login')
@@ -23,16 +24,16 @@ describe('/login tests', () => {
                     if (err) {
                         return done(err);
                     }
-
                     return done();
                 });
         });
     });
-    describe('POST /login', () => {
+
+    describe('GET /dashboard', () => {
+        it('login', loginUser());
         it('expect to return 302', (done) => {
             request(app)
-                .post('/login')
-                .send({ username: 'Gosho', password: '1' })
+                .get('/dashboard/59789dfd72e1a339b05cb1f5')
                 .expect(302)
                 .end((err, res) => {
                     if (err) {
@@ -43,4 +44,35 @@ describe('/login tests', () => {
                 });
         });
     });
+
+    describe('GET /editor', () => {
+        it('url that requires user to be logged in', (done) => {
+            request(app)
+                .get('/editor')
+                .expect(302)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+    });
+
+
+    function loginUser() {
+        return (done) => {
+            request(app)
+                .post('/login')
+                .send({ username: 'Gosho', password: '1' })
+                .expect(302)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+                    return done();
+                });
+            };
+        }
 });

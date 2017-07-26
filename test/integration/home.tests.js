@@ -1,7 +1,7 @@
 const request = require('supertest');
 
 describe('/home tests', () => {
-    const connectionString = 'mongodb://localhost/db-test';
+    const connectionString = 'mongodb://localhost/test-db';
     let app = null;
 
     beforeEach(() => {
@@ -14,7 +14,7 @@ describe('/home tests', () => {
             });
     });
 
-describe('GET /home', () => {
+    describe('GET /home', () => {
         it('expect to return 200', (done) => {
             request(app)
                 .get('/')
@@ -29,11 +29,11 @@ describe('GET /home', () => {
         });
     });
 
- describe('GET /1 - first post', () => {
+    describe('GET /1 - first post', () => {
         it('expect to return 200', (done) => {
             request(app)
-                .get('/1')
-                .expect(200)
+                .get('/5976166988ea0320f0d4cbae')
+                .expect(302)
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -44,11 +44,11 @@ describe('GET /home', () => {
         });
     });
 
-describe('GET /2 - second post', () => {
+    describe('GET /2 - second post', () => {
         it('expect to return 200', (done) => {
             request(app)
-                .get('/2')
-                .expect(200)
+                .get('/5976167588ea0320f0d4cbb5')
+                .expect(302)
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -62,8 +62,8 @@ describe('GET /2 - second post', () => {
     describe('GET /3 - third post', () => {
         it('expect to return 200', (done) => {
             request(app)
-                .get('/3')
-                .expect(200)
+                .get('/5976167e88ea0320f0d4cbbb')
+                .expect(302)
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -77,8 +77,8 @@ describe('GET /2 - second post', () => {
     describe('GET /4 - fourth post', () => {
         it('expect to return 200', (done) => {
             request(app)
-                .get('/4')
-                .expect(200)
+                .get('/5976168888ea0320f0d4cbc1')
+                .expect(302)
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -92,8 +92,8 @@ describe('GET /2 - second post', () => {
     describe('GET /Category%201 - first Category', () => {
         it('expect to return 200', (done) => {
             request(app)
-                .get('/Category%201')
-                .expect(200)
+                .get('/597618f088ea0320f0d4cd0f')
+                .expect(302)
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -103,51 +103,6 @@ describe('GET /2 - second post', () => {
                 });
         });
     });
-
-    describe('GET /Category%202 - second Category', () => {
-        it('expect to return 200', (done) => {
-            request(app)
-                .get('/Category%202')
-                .expect(200)
-                .end((err, res) => {
-                    if (err) {
-                        return done(err);
-                    }
-
-                    return done();
-                });
-        });
-    });
-
-    describe('GET /Category%203 - third Category', () => {
-        it('expect to return 200', (done) => {
-            request(app)
-                .get('/Category%203')
-                .expect(200)
-                .end((err, res) => {
-                    if (err) {
-                        return done(err);
-                    }
-
-                    return done();
-                });
-        });
-    });
-
-   describe('GET Invalid route to redirect', () => {
-       it('expect to return 302', (done) => {
-           request(app)
-               .get('/contanct1')
-               .expect(302)
-               .end((err, res) => {
-                   if (err) {
-                       return done(err);
-                   }
-
-                   return done();
-               });
-       });
-   });
 
     describe('GET /404', () => {
         it('expect to return 200', (done) => {

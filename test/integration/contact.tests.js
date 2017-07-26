@@ -1,7 +1,7 @@
 const request = require('supertest');
 
 describe('/contact tests', () => {
-    const connectionString = 'mongodb://localhost/db-test';
+    const connectionString = 'mongodb://localhost/test-db';
     let app = null;
 
     beforeEach(() => {

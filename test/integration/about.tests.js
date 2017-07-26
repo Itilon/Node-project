@@ -1,7 +1,7 @@
 const request = require('supertest');
 
 describe('/about tests', () => {
-    const connectionString = 'mongodb://localhost/db-test';
+    const connectionString = 'mongodb://localhost/test-db';
     let app = null;
 
     beforeEach(() => {
@@ -14,7 +14,7 @@ describe('/about tests', () => {
             });
     });
 
-describe('GET /about', () => {
+    describe('GET /about', () => {
         it('expect to return 200', (done) => {
             request(app)
                 .get('/about')
