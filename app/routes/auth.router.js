@@ -17,7 +17,7 @@ const attach = (app, data) => {
 
         .get('/dashboard/:id', (req, res) => {
             if (!req.isAuthenticated()) {
-                res.redirect('404');
+                res.redirect('/404');
             }
             const user = req.user;
 
@@ -28,7 +28,7 @@ const attach = (app, data) => {
 
         .get('/editor', (req, res) => {
             if (!req.isAuthenticated()) {
-                res.redirect('404');
+                res.redirect('/404');
             }
             const user = req.user;
 
@@ -39,10 +39,10 @@ const attach = (app, data) => {
 
         .get('/logout', (req, res) => {
             if (!req.isAuthenticated()) {
-                res.redirect('404');
+                res.redirect('/404');
             }
             req.logout();
-            res.redirect('login');
+            res.redirect('/login');
         })
 
         .post('/dashboard', (req, res) => {
@@ -53,7 +53,7 @@ const attach = (app, data) => {
 
             post.content = post.content.split('\r\n');
 
-            return data.items.create(post)
+            return data.posts.create(post)
                 .then((dbItem) => {
                     console.log(dbItem);
                 });

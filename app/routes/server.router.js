@@ -5,18 +5,18 @@ const attach = (app, data) => {
 
     router
 
-        // Catching favicon request:
+        // Catching the favicon request:
         .get('/favicon.ico', function(req, res) {
             res.status(204);
         })
 
         .get('/', (req, res) => {
-            return data.items.getAll()
-                .then((items) => {
+            return data.posts.getAll()
+                .then((posts) => {
                     return data.categories.getAll()
                         .then((categories) => {
                             res.render('home', {
-                                model: items,
+                                model: posts,
                                 categories: categories,
                             });
                         });
@@ -36,38 +36,42 @@ const attach = (app, data) => {
         })
 
         .get('/items', (req, res) => {
-            return data.items.getAll()
-                .then((items) => {
+            return data.posts.getAll()
+                .then((posts) => {
                     return res.render('items/all', {
-                        model: items,
+                        model: posts,
                     });
                 });
         })
 
         .post('/items', (req, res) => {
             const item = req.body;
-            return data.items.create(item)
+            return data.posts.create(item)
                 .then((dbitem) => res.redirect('/items/' + dbitem.id));
         })
 
         .get('/:id', (req, res) => {
             const id = req.params.id;
-            console.log(req.params);
-            return data.items.findById(id)
+
+            if (id.length !== 24) {
+                return res.redirect('/404');
+            }
+
+            return data.posts.findById(id)
                 .then((post) => {
                     if (!post) {
                         return data.categories.findById(id)
                             .then((category) => {
                                 if (!category) {
-                                    return res.redirect('404');
+                                    return res.redirect('/404');
                                 }
                                 return data.categories.getAll()
                                     .then((categories) => {
-                                        return data.items.getAll()
-                                            .then((items) => {
+                                        return data.posts.getAll()
+                                            .then((posts) => {
                                                 res.render('category', {
                                                     category: category,
-                                                    model: items,
+                                                    model: posts,
                                                     categories: categories,
                                                 });
                                             });
@@ -75,13 +79,13 @@ const attach = (app, data) => {
                             });
                     }
 
-                    return data.items.getAll()
-                        .then((items) => {
+                    return data.posts.getAll()
+                        .then((posts) => {
                             return data.categories.getAll()
                                 .then((categories) => {
                                     res.render('post', {
                                         post: post,
-                                        model: items,
+                                        model: posts,
                                         categories: categories,
                                     });
                                 });
