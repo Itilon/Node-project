@@ -3,7 +3,12 @@ const Post = require('../models/post.model');
 
 class PostsData extends BaseData {
     constructor(db) {
-        super(db, Post);
+        super(db, Post, Post);
+    }
+
+    _isModelValid(model) {
+        // maybe custom validation
+        return super._isModelValid(model);
     }
 }
 

@@ -3,7 +3,7 @@ const User = require('../models/user.model');
 
 class UsersData extends BaseData {
     constructor(db) {
-        super(db, User);
+        super(db, User, User);
     }
 
     findByUsername(username) {

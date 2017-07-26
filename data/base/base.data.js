@@ -1,9 +1,10 @@
 const { ObjectID } = require('mongodb');
 
 class BaseData {
-    constructor(db, modelClass) {
+    constructor(db, modelClass, validator) {
         this.db = db;
         this.modelClass = modelClass;
+        this.validator = validator;
         this.collectionName = this._getCollectionName();
         this.collection = this.db.collection(this.collectionName);
     }
@@ -27,6 +28,9 @@ class BaseData {
     }
 
     create(model) {
+        if (!this._isModelValid(model)) {
+            return Promise.reject('Invalid model');
+        }
         return this.collection.insert(model);
     }
 
@@ -38,6 +42,10 @@ class BaseData {
 
     _getCollectionName() {
        return this.modelClass.name.toLowerCase() + 's';
+    }
+
+    _isModelValid(model) {
+        return this.validator.isValid(model);
     }
 }
 module.exports = BaseData;
