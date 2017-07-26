@@ -17,32 +17,32 @@ const attach = (app, data) => {
 
         .get('/dashboard/:id', (req, res) => {
             if (!req.isAuthenticated()) {
-                res.redirect('/401');
+                return res.redirect('/401');
             }
             const user = req.user;
 
-            res.render('dashboard', {
+            return res.render('dashboard', {
                 user: user,
             });
         })
 
         .get('/editor', (req, res) => {
             if (!req.isAuthenticated()) {
-                res.redirect('/401');
+                return res.redirect('/401');
             }
             const user = req.user;
 
-            res.render('editor', {
+            return res.render('editor', {
                 user: user,
             });
         })
 
         .get('/logout', (req, res) => {
             if (!req.isAuthenticated()) {
-                res.redirect('/401');
+                return res.redirect('/401');
             }
             req.logout();
-            res.redirect('/login');
+            return res.redirect('/login');
         })
 
         .post('/edit', (req, res) => {

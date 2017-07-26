@@ -3,7 +3,7 @@ mixin dashheader
         div(class="row")
             div(class="col-sm-5")
                 h1(id="logo")
-                    a(href="#")
+                    a(href="/dashboard/" + user._id)
                         ="Welcome " + user.username + "!"
             div(class="col-sm-5")
                 form(id="search-form")

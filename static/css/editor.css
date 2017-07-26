@@ -5,20 +5,56 @@
 #main-body {
     background-color: #EFF0F3;
 }
-#editor {
+#editor, #cat-form, #tag-form {
     margin-top: 36px;
     border: 1px solid #EEEEEE;
     border-radius: 8px;
     background-color: #FFFFFF;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#editor h1 {
+    width: 80%;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 16px;
 }
 #title {
+    display: block;
+}
+#title, form div {
     width: 80%;
     margin-top: 24px;
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 24px;
 }
+#file {
+    display: none;
+}
+.button { 
+  background-color: #26313B;
+  color: #FFFFFF;
+  font-size: 14px;
+  border-radius: 4px;
+  outline: none;
+  padding: 8px 20px 6px 20px;
+  transition: 1.6s all;
+	-webkit-transition: 1.6s all;
+	-moz-transition: 1.6s all;
+	-o-transition: 1.6s all;
+  text-decoration: none;
+}
+.button:hover {
+  background: #F53f1A;
+  text-decoration: none;
+  cursor: pointer;
+}
+#category, #tags {
+    margin-left: 24px;
+}
 textarea {
+    display: block;
     width: 80%;
     height: 360px;
     margin-top: 24px;
