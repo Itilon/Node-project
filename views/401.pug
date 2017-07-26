@@ -1,0 +1,10 @@
+extends shared/_master
+
+block body
+    div(id="error-page")
+        h1
+            | 401 AUTHORIZATION REQUIRED
+        p
+            | Sorry, but access is denied due to invalid credentials. You do not have a permission to view this page.
+        a(class="button" href='/login')
+            | Go to the Login Page

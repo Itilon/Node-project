@@ -12,9 +12,13 @@ const init = (data) => {
        next();
    });
 
-    app.get('/404', (req, res) => {
-        res.render('404');
-    });
+    app
+        .get('/404', (req, res) => {
+            res.render('404');
+        })
+        .get('/401', (req, res) => {
+            res.render('401');
+        });
 
     require('./routes')(app, data);
 

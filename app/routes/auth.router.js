@@ -17,7 +17,7 @@ const attach = (app, data) => {
 
         .get('/dashboard/:id', (req, res) => {
             if (!req.isAuthenticated()) {
-                res.redirect('/404');
+                res.redirect('/401');
             }
             const user = req.user;
 
@@ -28,7 +28,7 @@ const attach = (app, data) => {
 
         .get('/editor', (req, res) => {
             if (!req.isAuthenticated()) {
-                res.redirect('/404');
+                res.redirect('/401');
             }
             const user = req.user;
 
@@ -39,23 +39,28 @@ const attach = (app, data) => {
 
         .get('/logout', (req, res) => {
             if (!req.isAuthenticated()) {
-                res.redirect('/404');
+                res.redirect('/401');
             }
             req.logout();
             res.redirect('/login');
         })
 
-        .post('/dashboard', (req, res) => {
+        .post('/edit', (req, res) => {
             const post = req.body;
-            const file = req.files.file;
+            const userId = req.session.passport.user;
+            // const file = req.files.file;
+            // file.mv('./uploads/' + file.name);
+            return data.users.findById(userId)
+                .then((user) => {
+                    post.author = user.username;
+                    post.content = post.content.split('\r\n');
+                    post.tags = post.tags.split(', ');
 
-            file.mv('./uploads/' + file.name);
-
-            post.content = post.content.split('\r\n');
-
-            return data.posts.create(post)
-                .then((dbItem) => {
-                    console.log(dbItem);
+                    return data.posts.create(post)
+                        .then((dbItem) => {
+                            console.log(dbItem);
+                            res.redirect('/editor');
+                    });
                 });
         });
 

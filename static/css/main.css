@@ -230,7 +230,7 @@ label:nth-child(3) {
   text-decoration: none;
 }
 
-/* 404 page: */
+/* 401 and 404 pages: */
 
 #error-page h1, #error-page p {
     text-align: center;
@@ -247,6 +247,9 @@ label:nth-child(3) {
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 40px;
+}
+#error-page a:link, #error-page a:visited {
+    text-decoration: none;
 }
 #error-page a:hover {
     color: #FFFFFF;
