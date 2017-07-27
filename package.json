@@ -27,7 +27,8 @@
     "morgan": "^1.8.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "pug": "^2.0.0-rc.2"
+    "pug": "^2.0.0-rc.2",
+    "selenium-webdriver": "^3.5.0"
   },
   "devDependencies": {
     "chai": "^4.0.2",

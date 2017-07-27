@@ -4,7 +4,6 @@ describe('/login tests', () => {
     const connectionString = 'mongodb://localhost/test-db';
     let app = null;
 
-
     beforeEach(() => {
         return Promise.resolve()
             .then(() => require('../../db')(connectionString))
@@ -30,11 +29,11 @@ describe('/login tests', () => {
     });
 
     describe('GET /dashboard', () => {
-        it('login', loginUser());
-        it('expect to return 302', (done) => {
+        it('expect to return 401', (done) => {
             request(app)
                 .get('/dashboard/59789dfd72e1a339b05cb1f5')
                 .expect(302)
+                .expect('Location', '/401')
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -50,6 +49,7 @@ describe('/login tests', () => {
             request(app)
                 .get('/editor')
                 .expect(302)
+                .expect('Location', '/401')
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -60,19 +60,18 @@ describe('/login tests', () => {
         });
     });
 
-
-    function loginUser() {
-        return (done) => {
+    describe('GET /logout', () => {
+        it('should return 302', (done) => {
             request(app)
-                .post('/login')
-                .send({ username: 'Gosho', password: '1' })
+                .get('/logout')
                 .expect(302)
                 .end((err, res) => {
                     if (err) {
                         return done(err);
                     }
+
                     return done();
                 });
-            };
-        }
+        });
+    });
 });
