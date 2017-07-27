@@ -10,6 +10,15 @@ block body
                     | Please, create an account by using the button below!
                 button(id="create-button" class="button" type="button") 
                     | CREATE AN ACCOUNT
+                form(id="logup-form" class="form-group" action="/logup" method="post")
+                    label(for="user")
+                        | Please, select your username:
+                    input(id="user" class="form-control" type="text" placeholder="Select your username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your username'" name="username")
+                    label(for="pass")
+                        | Please, choose a password:
+                    input(id="pass" class="form-control" type="password" placeholder="Enter your password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your password'" name="password")
+                    button(class="button" type="submit")
+                        | SIGN UP
             div(class="col-sm-6")
                 h2(class="login-form-title")
                     | REGISTERED USER

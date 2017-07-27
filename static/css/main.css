@@ -245,6 +245,9 @@ label:nth-child(3) {
 #login-form {
     margin-left: 0;
 }
+#logup-form {
+    display: none;
+}
 .button {
   background-color: #26313B;
   color: #FFFFFF;
