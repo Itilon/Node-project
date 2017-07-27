@@ -18,7 +18,7 @@ const attach = (app, data) => {
                         res.redirect('/login');
                     });
         })
-        
+
         .post('/login',
             passport.authenticate('local', {
                 failureRedirect: '/login',
