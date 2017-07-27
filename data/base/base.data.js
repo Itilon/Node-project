@@ -18,13 +18,22 @@ class BaseData {
         return this.collection.findOne({
             _id: new ObjectID(id),
         });
-}
+    }
 
     getAll() {
         const filter = {};
         const options = {};
         return this.collection.find(filter, options)
             .toArray();
+    }
+
+    getSome(number) {
+        const filter = {};
+        const options = {};
+        return this.collection.find(filter, options)
+                .sort({ _id: -1 })
+                .limit(number)
+                .toArray();
     }
 
     create(model) {

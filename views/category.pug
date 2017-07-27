@@ -10,10 +10,10 @@ block body
                         =category.name
                 each article in category.articles
                     div
-                        a(href=article._id)
+                        a(href="/post/" + article._id)
                             img(src=article.url class="img-responsive cat-img")
                         h2
-                            a(href=article._id)
+                            a(href="/post/" + article._id)
                                 =article.title
                         p
                             =article.content

@@ -1,5 +1,7 @@
 const { Router } = require('express');
 
+const latestArticlesNumber = 4;
+
 const attach = (app, data) => {
     const router = new Router();
 
@@ -11,7 +13,7 @@ const attach = (app, data) => {
         })
 
         .get('/', (req, res) => {
-            return data.posts.getAll()
+            return data.posts.getSome(latestArticlesNumber)
                 .then((posts) => {
                     return data.categories.getAll()
                         .then((categories) => {
@@ -35,7 +37,7 @@ const attach = (app, data) => {
             res.render('contact');
         })
 
-        .get('/items', (req, res) => {
+        /* .get('/items', (req, res) => {
             return data.posts.getAll()
                 .then((posts) => {
                     return res.render('items/all', {
@@ -48,9 +50,9 @@ const attach = (app, data) => {
             const item = req.body;
             return data.posts.create(item)
                 .then((dbitem) => res.redirect('/items/' + dbitem.id));
-        })
+        }) */
 
-        .get('/:id', (req, res) => {
+        .get('/post/:id', (req, res) => {
             const id = req.params.id;
 
             if (id.length !== 24) {
@@ -60,26 +62,10 @@ const attach = (app, data) => {
             return data.posts.findById(id)
                 .then((post) => {
                     if (!post) {
-                        return data.categories.findById(id)
-                            .then((category) => {
-                                if (!category) {
-                                    return res.redirect('/404');
-                                }
-                                return data.categories.getAll()
-                                    .then((categories) => {
-                                        return data.posts.getAll()
-                                            .then((posts) => {
-                                                res.render('category', {
-                                                    category: category,
-                                                    model: posts,
-                                                    categories: categories,
-                                                });
-                                            });
-                                    });
-                            });
+                        return res.redirect('/404');
                     }
 
-                    return data.posts.getAll()
+                    return data.posts.getSome(latestArticlesNumber)
                         .then((posts) => {
                             return data.categories.getAll()
                                 .then((categories) => {
@@ -90,6 +76,33 @@ const attach = (app, data) => {
                                     });
                                 });
                         });
+                });
+        })
+
+        .get('/category/:id', (req, res) => {
+            const id = req.params.id;
+
+            if (id.length !== 24) {
+                return res.redirect('/404');
+            }
+
+            return data.categories.findById(id)
+                .then((category) => {
+                    if (!category) {
+                        return res.redirect('/404');
+                    }
+
+                    return data.categories.getAll()
+                        .then((categories) => {
+                            return data.posts.getSome(latestArticlesNumber)
+                                .then((posts) => {
+                                    res.render('category', {
+                                        category: category,
+                                        model: posts,
+                                        categories: categories,
+                                    });
+                                });
+                            });
                 });
         });
 

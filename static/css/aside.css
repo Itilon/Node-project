@@ -49,6 +49,7 @@ h3.category a {
 }
 div.grid-wrapper {
     display: table;
+    width: 100%;
 }
 div.left-grid {
     display: table-cell;

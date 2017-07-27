@@ -15,6 +15,9 @@
 #logo a {
     color: #000000;
 }
+#logo a:link, #logo a:visited {
+    text-decoration: none;
+}
 #logo a:hover {
     text-decoration: none;
 }
