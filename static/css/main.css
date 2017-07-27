@@ -232,10 +232,10 @@ h2.form-title, h2.login-form-title {
 p.login-form-text {
     margin-bottom: 40px;
 }
-#login-form input {
+#login-form input, #logup-form input {
     margin-bottom: 8px;
 }
-#login-form input:focus {
+#login-form input:focus, #logup-form input:focus {
     outline: none;
     box-shadow: none;
 }
