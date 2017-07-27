@@ -7,6 +7,18 @@ const attach = (app, data) => {
     const router = new Router();
 
     router
+        .post('/signup', (req, res) => {
+            const user = req.body;
+
+            user.posts = [];
+
+            return data.users.create(user)
+                    .then((dbItem) => {
+                        console.log(dbItem);
+                        res.redirect('/login');
+                    });
+        })
+        
         .post('/login',
             passport.authenticate('local', {
                 failureRedirect: '/login',
@@ -60,7 +72,7 @@ const attach = (app, data) => {
                         .then((dbItem) => {
                             console.log(dbItem);
                             res.redirect('/editor');
-                    });
+                        });
                 });
         });
 
