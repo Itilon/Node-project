@@ -11,7 +11,8 @@ block body
                             | Tagged with: 
                             each tag in post.tags
                                 span
-                                    =tag + " "
+                                    a(href="/" + tag)
+                                        =tag + " "
                 h1
                     =post.title
                 img(src=post.url)

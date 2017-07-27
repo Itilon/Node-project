@@ -8,6 +8,7 @@ const items = [{
 const attach = (app) => {
     const router = new Router();
     router
+
         .get('/:id', (req, res) => {
             const id = parseInt(req.params.id, 10);
             const item = items.find((i) => i.id === id);
@@ -44,7 +45,7 @@ const attach = (app) => {
             res.send(true);
         });
 
-    app.use('/api/items', router);
+    app.use('/api', router);
 };
 
 module.exports = attach;

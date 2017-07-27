@@ -37,21 +37,6 @@ const attach = (app, data) => {
             res.render('contact');
         })
 
-        /* .get('/items', (req, res) => {
-            return data.posts.getAll()
-                .then((posts) => {
-                    return res.render('items/all', {
-                        model: posts,
-                    });
-                });
-        })
-
-        .post('/items', (req, res) => {
-            const item = req.body;
-            return data.posts.create(item)
-                .then((dbitem) => res.redirect('/items/' + dbitem.id));
-        }) */
-
         .get('/post/:id', (req, res) => {
             const id = req.params.id;
 
@@ -103,6 +88,30 @@ const attach = (app, data) => {
                                     });
                                 });
                             });
+                });
+        })
+
+        .get('/:tag', (req, res) => {
+            const tag = req.params.tag;
+            
+            return data.posts.filterBy({ tags: tag })
+                .then((taggedPosts) => {
+                    if (!taggedPosts) {
+                        return res.redirect('/404');
+                    }
+
+                    return data.categories.getAll()
+                        .then((categories) => {
+                            return data.posts.getSome(latestArticlesNumber)
+                                .then((posts) => {
+                                    res.render('tag', {
+                                        tag: tag,
+                                        taggedPosts: taggedPosts,
+                                        model: posts,
+                                        categories: categories,
+                                    });
+                                });
+                        });
                 });
         });
 
