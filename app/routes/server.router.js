@@ -93,7 +93,7 @@ const attach = (app, data) => {
 
         .get('/:tag', (req, res) => {
             const tag = req.params.tag;
-            
+
             return data.posts.filterBy({ tags: tag })
                 .then((taggedPosts) => {
                     if (!taggedPosts) {

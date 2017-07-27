@@ -9,13 +9,15 @@ block body
                     h1
                         =category.name
                 each article in category.articles
-                    div
-                        a(href="/post/" + article._id)
-                            img(src=article.url class="img-responsive cat-img")
-                        h2
+                    div(id="category-row" class="row")
+                        div(class="col-sm-4")
                             a(href="/post/" + article._id)
-                                =article.title
-                        p
-                            =article.content
+                                img(src=article.url class="img-responsive cat-img")
+                        div(class="col-sm-8")
+                            h2
+                                a(href="/post/" + article._id)
+                                    =article.title
+                            p
+                                =article.content
             +aside(model, categories)
         

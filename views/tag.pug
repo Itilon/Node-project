@@ -9,12 +9,14 @@ block body
                     h1
                         ="Posts Tagged '" + tag + "'"
                 each post in taggedPosts
-                    div
-                        a(href="/post/" + post._id)
-                            img(src=post.url class="img-responsive cat-img")
-                        h2
+                    div(id="category-row" class="row")
+                        div(class="col-sm-4")
                             a(href="/post/" + post._id)
-                                =post.title
-                        p
-                            =post.content[0]
+                                img(src=post.url class="img-responsive cat-img")
+                        div(class="col-sm-8")
+                            h2
+                                a(href="/post/" + post._id)
+                                    =post.title
+                            p
+                                =post.content[0]
             +aside(model, categories)
