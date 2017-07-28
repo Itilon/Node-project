@@ -1,0 +1,16 @@
+extends shared/_dashmaster
+include shared/_editor_navigation
+
+block body
+    main(class="row")
+    +editor_navigation
+    div(class="col-sm-10")
+        div(id="article-page")
+            h1
+                | My Articles:
+            each post in user.posts
+                div(class="post-container")
+                    h2(class="post-title")
+                        = post.title
+                    p(class="post")
+                        = post.content

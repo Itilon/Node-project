@@ -49,6 +49,19 @@ const attach = (app, data) => {
             });
         })
 
+        .get('/articles', (req, res) => {
+            if (!req.isAuthenticated()) {
+                return res.redirect('/401');
+            }
+            const user = req.user;
+
+            console.log(user);
+
+            return res.render('articles', {
+                user: user,
+            });
+        })
+
         .get('/logout', (req, res) => {
             if (!req.isAuthenticated()) {
                 return res.redirect('/401');

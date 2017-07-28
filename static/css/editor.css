@@ -5,7 +5,10 @@
 #main-body {
     background-color: #EFF0F3;
 }
-#editor {
+
+/* Editor page: */
+
+#editor, #article-page {
     margin-top: 36px;
     margin-right: 60px;
     margin-bottom: 20px;
@@ -63,4 +66,21 @@ textarea {
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 24px;
+}
+
+/* Articles page: */
+
+#article-page h1 {
+    width: 88%;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 16px;
+}
+div.post-container {
+    width: 88%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 16px;
+    border-bottom: 1px dashed #26313B;
 }
