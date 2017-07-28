@@ -21,7 +21,7 @@ describe('Home routes', () => {
         beforeEach((done) => {
             Promise.resolve()
                 .then(() => driver.get(appUrl));
-                done();
+            done();
         });
         it('expect to get text Latest Posts when on home', () => {
             return async()

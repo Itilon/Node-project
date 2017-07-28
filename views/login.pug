@@ -17,10 +17,10 @@ block body
                     label(for="pass")
                         | Please, choose a password:
                     input(id="pass" class="form-control" type="password" placeholder="Choose a password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Choose a password'" name="password")
-                    button(class="button" type="submit")
+                    button(id="sign-up-button" class="button" type="submit")
                         | SIGN UP
             div(class="col-sm-6")
-                h2(class="login-form-title")
+                h2(id="login-text" class="login-form-title")
                     | REGISTERED USER
                 p(class="login-form-text")
                     | If you already have an account with us, please log in here!
