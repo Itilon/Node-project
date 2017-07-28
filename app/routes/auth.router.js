@@ -60,13 +60,32 @@ const attach = (app, data) => {
         .post('/edit', (req, res) => {
             const post = req.body;
             const userId = req.session.passport.user;
-            // const file = req.files.file;
-            // file.mv('./uploads/' + file.name);
+            const file = req.files.file;
+            const currentDate = new Date;
+            const month = [];
+            month[0] = 'January';
+            month[1] = 'February';
+            month[2] = 'March';
+            month[3] = 'April';
+            month[4] = 'May';
+            month[5] = 'June';
+            month[6] = 'July';
+            month[7] = 'August';
+            month[8] = 'September';
+            month[9] = 'October';
+            month[10] = 'November';
+            month[11] = 'December';
+            const date = `${month[currentDate.getMonth()]} 
+                        ${currentDate.getDate()}, 
+                        ${currentDate.getFullYear()}`;
+            file.mv('./static/images/' + file.name);
             return data.users.findById(userId)
                 .then((user) => {
                     post.author = user.username;
                     post.content = post.content.split('\r\n');
                     post.tags = post.tags.split(', ');
+                    post.url = '/static/images/' + file.name;
+                    post.date = date;
 
                     return data.posts.create(post)
                         .then((dbItem) => {
