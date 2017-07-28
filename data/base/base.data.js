@@ -55,7 +55,13 @@ class BaseData {
         return this.collection.updateOne(
             { _id: model._id },
             { $push:
-                { articles: value },
+                {
+                    articles:
+                    {
+                        $each: [value],
+                        $position: 0,
+                    },
+                },
             },
             model);
     }
