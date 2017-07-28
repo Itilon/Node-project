@@ -4,7 +4,7 @@ const button = $('#create-button');
 const form = $('#logup-form');
 
 button.click( () => {
-    button.fadeOut(2400, () => {
-        form.fadeIn(1200);
+    button.fadeOut(1200, () => {
+        form.fadeIn(1800);
     });
 });

@@ -10,6 +10,12 @@ class PostsData extends BaseData {
         // maybe custom validation
         return super._isModelValid(model);
     }
+
+    filterBy(props) {
+        return this.collection.find(props)
+            .sort({ _id: -1 })
+            .toArray();
+    }
 }
 
 module.exports = PostsData;
