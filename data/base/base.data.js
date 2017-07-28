@@ -49,10 +49,15 @@ class BaseData {
         return this.collection.insert(model);
     }
 
-    updateById(model) {
-        return this.collection.updateOne({
-            _id: model._id,
-        }, model);
+    // To move in a child:
+
+    updateById(model, value) {
+        return this.collection.updateOne(
+            { _id: model._id },
+            { $push:
+                { articles: value },
+            },
+            model);
     }
 
     _getCollectionName() {
