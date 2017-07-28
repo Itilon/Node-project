@@ -101,6 +101,7 @@ describe('/home tests', () => {
                     return done();
                 });
         });
+        it('expect to redirect to /404 when called with invalid id', (done) => {
             request(app)
                 .get('/post/5978903ad7521c8a6c67c711')
                 .expect(302)
@@ -115,6 +116,7 @@ describe('/home tests', () => {
         });
     });
 
+    describe('GET /tags', () => {
         it('expect to return 200', (done) => {
             request(app)
                 .get('/tags')
@@ -128,6 +130,7 @@ describe('/home tests', () => {
                 });
         });
     });
+    describe('GET /categories - first Category', () => {
         it('expect to return 200', (done) => {
             request(app)
                 .get('/category/597afc1796459dd18951e326')

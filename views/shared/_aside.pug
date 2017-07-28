@@ -3,7 +3,7 @@ mixin aside
         form
             input(id="search" class="form-control" placeholder="Search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'")
         div(class="aside-title")
-            h2
+            h2(id="latest-posts")
                 | Latest Posts
         ul
             each post in model

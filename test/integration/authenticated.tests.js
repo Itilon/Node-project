@@ -47,6 +47,7 @@ describe('url that requires user to be logged in', () => {
             .field('tags', 'Something1')
             .field('content', 'A brief')
             .expect(302)
+            .expect('Location', '/editor')
             .end((err, res) => {
                 if (err) {
                     return done(err);
