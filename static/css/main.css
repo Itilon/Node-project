@@ -111,23 +111,29 @@ div.caption p {
 #tag-row {
     color: #A9A9A9;
 }
-#tag-row span a {
+#tag-row span a, span.author a {
     color: #000000;
     transition: 0.8s all;
 	  -webkit-transition: 0.8s all;
 	  -moz-transition: 0.8s all;
 	  -o-transition: 0.8s all;
 }
-#tag-row span a:link, #tag-row span a:visited {
+#tag-row span a:link, 
+#tag-row span a:visited,
+span.author a:link,
+span.author a:visited {
     text-decoration: none;
 }
-#tag-row span a:hover {
+#tag-row span a:hover, span.author a:hover {
     color: #F53F1A;
     text-decoration: none;
 }
 #bottom-row span {
     padding-left: 20px;
     color: #000000;
+}
+span.author {
+    padding-left: 0 !important;
 }
 
 /* Category page: */

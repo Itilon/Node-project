@@ -91,6 +91,31 @@ const attach = (app, data) => {
                 });
         })
 
+        .get('/author/:author', (req, res) => {
+            const author = req.params.author;
+
+            return data.users.findByUsername(author)
+                .then((foundAuthor) => {
+                    if (!foundAuthor) {
+                        return res.redirect('/404');
+                    }
+
+                    return data.categories.getAll()
+                        .then((categories) => {
+                            return data.posts.getSome(latestArticlesNumber)
+                                .then((posts) => {
+                                    console.log(foundAuthor);
+                                    res.render('author', {
+                                        author: foundAuthor,
+                                        authorPosts: foundAuthor.posts,
+                                        model: posts,
+                                        categories: categories,
+                                    });
+                                });
+                        });
+                });
+        })
+
         .get('/:tag', (req, res) => {
             const tag = req.params.tag;
 

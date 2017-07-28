@@ -28,6 +28,21 @@ class UsersData extends BaseData {
                 return true;
             });
     }
+
+    updateById(model, value) {
+        return this.collection.updateOne(
+            { _id: model._id },
+            { $push:
+                {
+                    posts:
+                    {
+                        $each: [value],
+                        $position: 0,
+                    },
+                },
+            },
+            model);
+    }
 }
 
 module.exports = UsersData;

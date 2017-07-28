@@ -24,5 +24,8 @@ block body
                     p(id="bottom-row")
                         =post.date
                         span
-                            ="Article by: " + post.author
+                            ="Article by: " 
+                            span(class="author")
+                                a(href="/author/" + post.author)
+                                    =post.author
             +aside(model)

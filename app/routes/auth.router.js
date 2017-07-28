@@ -106,7 +106,11 @@ const attach = (app, data) => {
 
                                         return data.categories.create(cat)
                                             .then(() => {
-                                                return res.redirect('/editor');
+                                                return data.users
+                                                    .updateById(user, article)
+                                                    .then(() => {
+                                                        res.redirect('/editor');
+                                                    });
                                             });
                                     }
 
@@ -118,7 +122,11 @@ const attach = (app, data) => {
                                     return data.categories
                                         .updateById(category, article)
                                         .then(() => {
-                                            return res.redirect('/editor');
+                                            return data.users
+                                                .updateById(user, article)
+                                                .then(() => {
+                                                    res.redirect('/editor');
+                                                });
                                         });
                                 });
                         });
