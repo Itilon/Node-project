@@ -15,7 +15,8 @@ block body
                                         =tag + " "
                 h1
                     =post.title
-                img(src=post.url)
+                a(href=post.url)
+                    img(src=post.url)
                 each paragraph in post.content
                     p
                         =paragraph

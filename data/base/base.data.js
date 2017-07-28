@@ -20,6 +20,12 @@ class BaseData {
         });
     }
 
+    findByName(name) {
+        return this.collection.findOne({
+            name: name,
+        });
+    }
+
     getAll() {
         const filter = {};
         const options = {};

@@ -89,8 +89,23 @@ const attach = (app, data) => {
 
                     return data.posts.create(post)
                         .then((dbItem) => {
-                            console.log(dbItem);
-                            res.redirect('/editor');
+                            console.log(dbItem.ops[0].category);
+                            return data.categories
+                                .findByName(dbItem.ops[0].category)
+                                .then((category) => {
+                                    if (!category) {
+                                        const cat = {};
+                                        cat.name = dbItem.ops[0].category;
+
+                                        return data.categories.create(cat)
+                                            .then((c) => {
+                                                console.log(c);
+                                                return res.redirect('/editor');
+                                            });
+                                    }
+                                    console.log(category);
+                                    return res.redirect('/editor');
+                                });
                         });
                 });
         });
