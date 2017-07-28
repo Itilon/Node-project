@@ -89,13 +89,20 @@ const attach = (app, data) => {
 
                     return data.posts.create(post)
                         .then((dbItem) => {
-                            console.log(dbItem.ops[0].category);
+                            console.log(dbItem.ops[0].title);
                             return data.categories
                                 .findByName(dbItem.ops[0].category)
                                 .then((category) => {
                                     if (!category) {
                                         const cat = {};
                                         cat.name = dbItem.ops[0].category;
+                                        cat.articles = [];
+                                        const article = {};
+                                        article._id = dbItem.ops[0]._id;
+                                        article.title = dbItem.ops[0].title;
+                                        article.content = dbItem.ops[0].content[0];
+                                        article.url = dbItem.ops[0].url;
+                                        cat.articles.push(article);
 
                                         return data.categories.create(cat)
                                             .then((c) => {
