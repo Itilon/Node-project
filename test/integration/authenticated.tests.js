@@ -1,4 +1,4 @@
-/* eslint-disable consistent-return */
+/* eslint-disable consistent-return, max-len */
 const request = require('supertest');
 
 const connectionString = 'mongodb://localhost/test-db';
@@ -38,10 +38,40 @@ describe('url that requires user to be logged in', () => {
                 return done();
             });
     });
+    it('Post /edit', (done) => {
+        server
+            .post('/edit')
+            .field('title', 'Something')
+            .attach('file', 'static/images/image.jpg')
+            .field('category', 'Random')
+            .field('tags', 'Something1')
+            .field('content', 'A brief')
+            .expect(302)
+            .end((err, res) => {
+                if (err) {
+                    return done(err);
+                }
+                return done();
+            });
+    });
     it('GET /logout', (done) => {
         server
             .get('/logout')
             .expect(302)
+            .expect('Location', '/login')
+            .end((err, res) => {
+                if (err) {
+                    return done(err);
+                }
+                return done();
+            });
+    });
+    it('Post /signup', (done) => {
+        server
+            .post('/signup')
+            .send({ username: 'gosho', password: '1' })
+            .expect(302)
+            .expect('Location', '/login')
             .end((err, res) => {
                 if (err) {
                     return done(err);

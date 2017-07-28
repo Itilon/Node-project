@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const request = require('supertest');
 
 describe('/home tests', () => {
@@ -29,11 +30,11 @@ describe('/home tests', () => {
         });
     });
 
-    describe('GET /1 - first post', () => {
+    describe('GET - first post', () => {
         it('expect to return 200', (done) => {
             request(app)
-                .get('/5976166988ea0320f0d4cbae')
-                .expect(302)
+                .get('/post/59789024d7521c8a6c67c46a')
+                .expect(200)
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -44,11 +45,11 @@ describe('/home tests', () => {
         });
     });
 
-    describe('GET /2 - second post', () => {
+    describe('GET - second post', () => {
         it('expect to return 200', (done) => {
             request(app)
-                .get('/5976167588ea0320f0d4cbb5')
-                .expect(302)
+                .get('/post/5978902ad7521c8a6c67c46f')
+                .expect(200)
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -59,11 +60,11 @@ describe('/home tests', () => {
         });
     });
 
-    describe('GET /3 - third post', () => {
+    describe('GET - third post', () => {
         it('expect to return 200', (done) => {
             request(app)
-                .get('/5976167e88ea0320f0d4cbbb')
-                .expect(302)
+                .get('/post/59789033d7521c8a6c67c476')
+                .expect(200)
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -74,11 +75,36 @@ describe('/home tests', () => {
         });
     });
 
-    describe('GET /4 - fourth post', () => {
+    describe('GET - fourth post', () => {
         it('expect to return 200', (done) => {
             request(app)
-                .get('/5976168888ea0320f0d4cbc1')
+                .get('/post/5978903ad7521c8a6c67c47b')
+                .expect(200)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+        it('expect to redirect to /404 when called with invalid id', (done) => {
+            request(app)
+                .get('/post/5978903ad7521c8a6c67c47')
                 .expect(302)
+                .expect('Location', '/404')
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+            request(app)
+                .get('/post/5978903ad7521c8a6c67c711')
+                .expect(302)
+                .expect('Location', '/404')
                 .end((err, res) => {
                     if (err) {
                         return done(err);
@@ -89,11 +115,49 @@ describe('/home tests', () => {
         });
     });
 
-    describe('GET /Category%201 - first Category', () => {
         it('expect to return 200', (done) => {
             request(app)
-                .get('/597618f088ea0320f0d4cd0f')
+                .get('/tags')
+                .expect(200)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+    });
+        it('expect to return 200', (done) => {
+            request(app)
+                .get('/category/597afc1796459dd18951e326')
+                .expect(200)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+        it('expect to return 302 when called with invalid id', (done) => {
+            request(app)
+                .get('/category/597afc1796459dd18951e32')
                 .expect(302)
+                .expect('Location', '/404')
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+        it('expect to redirect to /404 when the category does not exist', (done) => {
+            request(app)
+                .get('/category/597afc1796459dd18951e896')
+                .expect(302)
+                .expect('Location', '/404')
                 .end((err, res) => {
                     if (err) {
                         return done(err);
