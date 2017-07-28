@@ -85,7 +85,7 @@ describe('Login routes', () => {
                     expect(text).to.deep.equal('REGISTERED USER');
                 });
         });
-        it('expect to get submit text when clicked on editor', () => {
+        it('expect to update the home page after creating a post', () => {
             const username = 'Gosho';
             const password = '1';
             const title = 'The Rhythms That MakeElephant Seals Run or Fight';
