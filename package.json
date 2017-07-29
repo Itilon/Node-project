@@ -10,6 +10,7 @@
     "babel-eslint": "^7.2.3",
     "body-parser": "^1.17.2",
     "bootstrap": "^3.3.7",
+    "bootstrap-3-typeahead": "^4.0.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "eslint-config-google": "^0.9.1",

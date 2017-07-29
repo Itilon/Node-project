@@ -1,6 +1,8 @@
 extends shared/_dashmaster
 include shared/_editor_navigation
-
+block head_scripts
+    script(src="/libs/bootstrap-3-typeahead/bootstrap3-typeahead.js")
+    script(src="/static/scripts/editor.js")
 block body
     main(class="row")
     +editor_navigation
@@ -14,7 +16,7 @@ block body
                     label(for="file" class="button")
                         | Add Media
                     input(id="file" type="file" name="file" placeholder="Add Media")
-                    input(id="category" name="category" placeholder="Enter the post category here")
+                    input(id="category" name="category" placeholder="Enter the post category here" autocomplete="off")
                     input(id="tags" name="tags" placeholder="Enter the post tags here")
                 textarea(id="content" name="content" placeholder="Text")
                 div

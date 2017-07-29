@@ -5,9 +5,15 @@ const { Router } = require('express');
 //     name: 'Pesho',
 // }];
 
-const attach = (app) => {
+const attach = (app, data) => {
     const router = new Router();
-    // router
+    router
+        .get('/categories', (req, res) => {
+            return data.categories.getAll()
+                .then((cats) => {
+                    return res.send(cats);
+                });
+        });
 
     //     .get('/:id', (req, res) => {
     //         const id = parseInt(req.params.id, 10);
