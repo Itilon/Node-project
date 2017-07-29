@@ -29,7 +29,7 @@ describe('url that requires user to be logged in', () => {
     });
     it('GET /dashboard', (done) => {
         server
-            .get('/dashboard/59789394d7521c8a6c67c70f')
+            .get('/dashboard/597c6b198f1d031b5851c597')
             .expect(200)
             .end((err, res) => {
                 if (err) {
@@ -38,12 +38,40 @@ describe('url that requires user to be logged in', () => {
                 return done();
             });
     });
-    it('Post /edit', (done) => {
+        it('GET /articles', (done) => {
+        server
+            .get('/articles')
+            .expect(200)
+            .end((err, res) => {
+                if (err) {
+                    return done(err);
+                }
+                return done();
+            });
+    });
+    it('Post /edit with not existing category', (done) => {
         server
             .post('/edit')
             .field('title', 'Something')
             .attach('file', 'static/images/image.jpg')
-            .field('category', 'Random')
+            .field('category', 'RandomD')
+            .field('tags', 'Something1')
+            .field('content', 'A brief')
+            .expect(302)
+            .expect('Location', '/editor')
+            .end((err, res) => {
+                if (err) {
+                    return done(err);
+                }
+                return done();
+            });
+    });
+    it('Post /edit with existing category', (done) => {
+        server
+            .post('/edit')
+            .field('title', 'Something')
+            .attach('file', 'static/images/image.jpg')
+            .field('category', 'Animals')
             .field('tags', 'Something1')
             .field('content', 'A brief')
             .expect(302)
@@ -70,7 +98,7 @@ describe('url that requires user to be logged in', () => {
     it('Post /signup', (done) => {
         server
             .post('/signup')
-            .send({ username: 'gosho', password: '1' })
+            .send({ username: 'gosheto', password: '123456' })
             .expect(302)
             .expect('Location', '/login')
             .end((err, res) => {
@@ -87,9 +115,9 @@ function loginUser() {
     return (done) => {
         server
             .post('/login')
-            .send({ username: 'gosho', password: '1' })
+            .send({ username: 'pesho', password: '123456' })
             .expect(302)
-            .expect('Location', '/dashboard/59789394d7521c8a6c67c70f')
+            .expect('Location', '/dashboard/597c6b198f1d031b5851c597')
             .end(onResponse);
 
         function onResponse(err, res) {

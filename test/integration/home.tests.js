@@ -115,6 +115,41 @@ describe('/home tests', () => {
                 });
         });
     });
+    it('get /author', (done) => {
+        request(app)
+            .get('/author/pesho')
+            .expect(200)
+            .end((err, res) => {
+                if (err) {
+                    return done(err);
+                }
+                return done();
+            });
+    });
+    it('get /author with invalid name', (done) => {
+        request(app)
+            .get('/author/pesho123')
+            .expect(302)
+            .expect('Location', '/404')
+            .end((err, res) => {
+                if (err) {
+                    return done(err);
+                }
+                return done();
+            });
+    });
+    it('get /articles when not logged in should redirect to /401', (done) => {
+        request(app)
+            .get('/articles')
+            .expect(302)
+            .expect('Location', '/401')
+            .end((err, res) => {
+                if (err) {
+                    return done(err);
+                }
+                return done();
+            });
+    });
 
     describe('GET /tags', () => {
         it('expect to return 200', (done) => {
@@ -170,7 +205,47 @@ describe('/home tests', () => {
                 });
         });
     });
+    describe('GET /categories', () => {
+        it('expect to return 200', (done) => {
+            request(app)
+                .get('/categories')
+                .expect(200)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
 
+                    return done();
+                });
+        });
+    });
+    describe('GET /search', () => {
+        it('expect to redirect to /404 when called with invalid data', (done) => {
+            request(app)
+                .get('/search?search=rhythms')
+                .expect(302)
+                .expect('Location', '/404')
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+        it('expect to return 200 when called with existing data', (done) => {
+            request(app)
+                .get('/search?search=first')
+                .expect(200)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+    });
     describe('GET /404', () => {
         it('expect to return 200', (done) => {
             request(app)
