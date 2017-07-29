@@ -116,6 +116,44 @@ const attach = (app, data) => {
                 });
         })
 
+        .get('/search', (req, res) => {
+            const searchTerm = req.query.search;
+            return data.posts
+                .filterBy(
+                    {
+                        title: { '$regex': searchTerm, '$options': 'i' },
+                    }
+                )
+                .then((results) => {
+                    return data.posts
+                    .filterBy(
+                        {
+                            content: { '$regex': searchTerm, '$options': 'i' },
+                        }
+                    )
+                    .then((postsFound) => {
+                        if (!results && !postsFound) {
+                            return res.redirect('/404');
+                        }
+
+                        return data.categories.getAll()
+                            .then((categories) => {
+                                return data.posts
+                                    .getSome(latestArticlesNumber)
+                                    .then((posts) => {
+                                        res.render('search', {
+                                            searchTerm: searchTerm,
+                                            results: results,
+                                            postsFound: postsFound,
+                                            model: posts,
+                                            categories: categories,
+                                        });
+                                    });
+                            });
+                    });
+                });
+        })
+
         .get('/:tag', (req, res) => {
             const tag = req.params.tag;
 
