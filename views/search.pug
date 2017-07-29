@@ -8,7 +8,18 @@ block body
                 div(id="category-header")
                     h1
                         ="Search Results For: '" + searchTerm + "'"
-                each article in results && postsFound
+                each article in results
+                    div(id="category-row" class="row")
+                        div(class="col-sm-4")
+                            a(href="/post/" + article._id)
+                                img(src=article.url class="img-responsive cat-img")
+                        div(class="col-sm-8")
+                            h2
+                                a(href="/post/" + article._id)
+                                    =article.title
+                            p
+                                =article.content[0]
+                each article in postsFound
                     div(id="category-row" class="row")
                         div(class="col-sm-4")
                             a(href="/post/" + article._id)
