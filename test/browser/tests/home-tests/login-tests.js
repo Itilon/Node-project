@@ -44,8 +44,8 @@ describe('Login routes', () => {
         });
 
         it('expect to get the welcome sign after logging in', () => {
-            const username = 'Gosho';
-            const password = '1';
+            const username = 'pesho';
+            const password = '123456';
 
             return async()
                 .then(() => ui.setValue('input[id="username"]', username))
@@ -53,12 +53,12 @@ describe('Login routes', () => {
                 .then(() => ui.click('button[id="login-button"]'))
                 .then(() => ui.getText('h1'))
                 .then((text) => {
-                    expect(text).to.deep.equal('Welcome Gosho!');
+                    expect(text).to.deep.equal('Welcome pesho!');
                 });
         });
         it('expect to get submit text when clicked on editor', () => {
-            const username = 'Gosho';
-            const password = '1';
+            const username = 'pesho';
+            const password = '123456';
 
             return async()
                 .then(() => ui.setValue('input[id="username"]', username))
@@ -71,8 +71,8 @@ describe('Login routes', () => {
                 });
         });
         it('expect to logout and redirect to login page', () => {
-            const username = 'Gosho';
-            const password = '1';
+            const username = 'pesho';
+            const password = '123456';
 
             return async()
                 .then(() => ui.setValue('input[id="username"]', username))
@@ -86,10 +86,10 @@ describe('Login routes', () => {
                 });
         });
         it('expect to update the home page after creating a post', () => {
-            const username = 'Gosho';
-            const password = '1';
-            const title = 'The Rhythms That MakeElephant Seals Run or Fight';
-            const category = 'Animals';
+            const username = 'Pesho';
+            const password = '123456';
+            const title = 'The Rhythms That MakeElephant Seals Run or Fight123';
+            const category = 'Something Random';
             const content = 'And here’s why: In the rhythm and pitch of the first call, you recognize one voice as a familiar, more dominant male that you’ve fought with before. But you can’t discern the other, modified call, according to a study published Thursday in Current Biology. This suggests that elephant seals are the only known mammals other than humans that can use rhythm to recognize and respond to other members of their species in the wild.During breeding season, between December and March, elephant seals take a break from their lives at sea and congregate on the West Coast from San Francisco to Mexico. The males, called bulls, arrive first and fight to establish dominance. Winning males become alphas with a whole harem of females with which they can breed. Losers become betas, connecting with females only opportunistically, when the alphas aren’t around and dominating other males that are even lower in the hierarchy.';
             const file = 'D:/Nodejs Teamwork/Node-project/static/images/image.jpg';
             const tags = 'Animals';
@@ -111,6 +111,20 @@ describe('Login routes', () => {
                 .then(() => ui.getText('h2'))
                 .then((text) => {
                     expect(text).to.deep.equal(title);
+                });
+        });
+        it('expect to have the latest article updated', () => {
+            const username = 'pesho';
+            const password = '123456';
+
+            return async()
+                .then(() => ui.setValue('input[id="username"]', username))
+                .then(() => ui.setValue('input[id="password"]', password))
+                .then(() => ui.click('button[id="login-button"]'))
+                .then(() => ui.click('#btn-nav-articles'))
+                .then(() => ui.getText('#article-title'))
+                .then((text) => {
+                    expect(text).to.deep.equal('The Rhythms That MakeElephant Seals Run or Fight123');
                 });
         });
     });

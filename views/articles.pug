@@ -10,7 +10,7 @@ block body
                 | My Articles:
             each post in user.posts
                 div(class="post-container")
-                    h2(class="post-title")
+                    h2(id="article-title" class="post-title")
                         = post.title
                     p(class="post")
                         = post.content

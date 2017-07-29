@@ -22,7 +22,7 @@ mixin aside
                 | Categories
         ul
             each category in categories
-                        li
-                            h3(class="category")
+                        li(id="category-list")
+                            h3(id="category-title" class="category")
                                 a(href="/category/" + category._id)
                                     = "|| " + category.name
