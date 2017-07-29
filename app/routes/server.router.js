@@ -132,7 +132,9 @@ const attach = (app, data) => {
                         }
                     )
                     .then((postsFound) => {
-                        if (!results && !postsFound) {
+                        console.log(results);
+                        console.log(postsFound);
+                        if (results.length === 0 && postsFound.length === 0) {
                             return res.redirect('/404');
                         }
 
