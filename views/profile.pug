@@ -1,0 +1,22 @@
+extends shared/_dashmaster
+include shared/_dashboard_navigation
+
+block body
+    main(class="no-container row")
+        +dashboard_navigation
+        div(class="col-sm-10")
+            div(id="profile-page")
+                h1
+                    | Profile
+                form
+                    label(for="username")
+                        | Username (cannot be changed):
+                    input(id="username" placeholder=user.username readonly)
+                    div
+                        p
+                            | Number of articles: 
+                            span
+                                =user.posts.length
+                    label(for="password")
+                        | Password:
+                    input(id="password")

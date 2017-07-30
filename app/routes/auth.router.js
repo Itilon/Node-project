@@ -5,12 +5,15 @@ const attach = (app, controllers) => {
     const router = new Router();
 
     const userController = controllers.userController;
+
     router
         .post('/signup', userController.signUp)
 
         .post('/login', userController.signIn)
 
         .get('/dashboard/:id', userController.getDashboard)
+
+        .get('/profile', userController.getProfile)
 
         .get('/editor', userController.getEditor)
 

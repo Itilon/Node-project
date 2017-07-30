@@ -48,6 +48,17 @@ module.exports = (data) => {
         });
     };
 
+    const getProfile = (req, res) => {
+        if (!req.isAuthenticated()) {
+            return res.redirect('/401');
+        }
+        const user = req.user;
+
+        return res.render('profile', {
+            user: user,
+        });
+    };
+
     const getEditor = (req, res) => {
         if (!req.isAuthenticated()) {
             return res.redirect('/401');
@@ -174,6 +185,7 @@ module.exports = (data) => {
         login,
         signIn,
         getDashboard,
+        getProfile,
         getEditor,
         getArticles,
         getLogout,

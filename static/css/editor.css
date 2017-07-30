@@ -11,7 +11,7 @@ main.no-container {
 
 /* Editor page: */
 
-#editor, #article-page {
+#editor, #article-page, #profile-page {
     margin-top: 36px;
     margin-right: 60px;
     margin-bottom: 20px;
@@ -139,10 +139,66 @@ a.button:hover {
     color: #FFFFFF;
 }
 
+/* Profile page: */
+
+#profile-page h1 {
+    width: 88%;
+    margin-top: 20px;
+    margin-left: 12px;
+    margin-bottom: 16px;
+}
+#profile-page form {
+    overflow: hidden;
+}
+#profile-page input {
+    margin-right: 46%;
+    margin-bottom: 12px;
+    padding-left: 4px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    float: right;
+    clear: both;
+}
+#profile-page label, #profile-page div {
+    margin-left: 12px;
+}
+#profile-page span {
+    margin-right: 46%;
+    float: right;
+    clear: both;
+}
+#profile-page p {
+    font-weight: bold;
+}
+
 /* On smaller screens: */
 
+@media (max-width: 1048px) {
+    #profile-page input, #profile-page span {
+        margin-right: 36%;
+    }
+}
+
+@media (max-width: 920px) {
+    #profile-page input, #profile-page span {
+        margin-right: 30%;
+    }
+}
+
+@media (max-width: 856px) {
+    #profile-page input, #profile-page span {
+        margin-right: 24%;
+    }
+}
+
+@media (max-width: 780px) {
+    #profile-page input, #profile-page span {
+        margin-right: 20%;
+    }
+}
+
 @media (max-width: 768px) {
-    #editor, #article-page {
+    #editor, #article-page, #profile-page {
         margin-right: 0;
     }
     form div {
@@ -153,5 +209,50 @@ a.button:hover {
         margin-top: 12px;
         margin-left: 0;
         margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 584px) {
+    #profile-page input, #profile-page span {
+        margin-right: 16%;
+    }
+}
+
+@media (max-width: 560px) {
+    #profile-page input, #profile-page span {
+        margin-right: 12%;
+    }
+}
+
+@media (max-width: 528px) {
+    #profile-page input, #profile-page span {
+        margin-right: 6%;
+    }
+}
+
+@media (max-width: 504px) {
+    #profile-page input {
+        width: 160px;
+    }
+}
+
+@media (max-width: 464px) {
+    #profile-page input {
+        width: 120px;
+    }
+}
+
+@media (max-width: 420px) {
+    #profile-page input {
+        width: 80px;
+    }
+    #profile-page label, #profile-page div {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 344px) {
+    #profile-page input {
+        width: 64px;
     }
 }
