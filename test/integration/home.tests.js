@@ -222,7 +222,7 @@ describe('/home tests', () => {
     describe('GET /search', () => {
         it('expect to redirect to /404 when called with invalid data', (done) => {
             request(app)
-                .get('/search?search=rhythms')
+                .get('/search?search=randomSeachTerm')
                 .expect(302)
                 .expect('Location', '/404')
                 .end((err, res) => {

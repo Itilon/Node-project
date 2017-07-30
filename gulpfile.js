@@ -22,6 +22,7 @@ gulp.task('pre-test', () => {
         './db/**/*.js',
         './models/**/*.js',
         './server.js',
+        './controllers/**/*.js',
     ])
         .pipe(istanbul({
             includeUntested: true,
