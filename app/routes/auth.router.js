@@ -144,6 +144,21 @@ const attach = (app, data) => {
                                 });
                         });
                 });
+        })
+
+        .post('/delete', (req, res) => {
+            const id = req.body.id;
+            return data.posts.deleteById(id)
+                .then(() => {
+                    // eslint-disable-next-line new-cap
+                    return data.users.pullById(id)
+                        .then(() => {
+                            return data.categories.pullById(id)
+                                .then(() => {
+                                    res.redirect('/articles');
+                                });
+                        });
+                });
         });
 
     app.use(flash());

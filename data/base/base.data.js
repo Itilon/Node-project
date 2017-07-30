@@ -49,7 +49,16 @@ class BaseData {
         return this.collection.insert(model);
     }
 
-    // To move in a child:
+    deleteById(id) {
+        // eslint-disable-next-line new-cap
+        return this.collection.remove({ _id: ObjectID(id) });
+    }
+
+    pullById(id) {
+        return this.collection
+            // eslint-disable-next-line new-cap
+            .update({}, { $pull: { posts: { _id: ObjectID(id) } } } );
+    }
 
     _getCollectionName() {
        return this.modelClass.name.toLowerCase() + 's';

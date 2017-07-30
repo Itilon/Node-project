@@ -20,8 +20,9 @@ block body
                             p(class="post")
                                 = post.content
                         div(class="col-sm-2")
-                            form
-                                button(class="del-button button")
+                            form(action="/delete" method="post")
+                                input(type="hidden" value=post._id name="id")
+                                button(class="del-button button" type="submit")
                                     | Delete post
                             div(class="update-button")
                                 a(href="/editor" class="button")

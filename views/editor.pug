@@ -10,7 +10,7 @@ block body
             div(id="editor" )
                 h1
                     | Add a New Post
-                form(action="/edit" method='post' enctype="multipart/form-data")
+                form(action="/edit" method="post" enctype="multipart/form-data")
                     input(id="title" name="title" placeholder="Enter the post title here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter the post title here'")
                     div
                         label(for="file" class="button")

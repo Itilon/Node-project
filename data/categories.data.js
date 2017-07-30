@@ -1,9 +1,16 @@
 const BaseData = require('./base/base.data');
 const Category = require('../models/category.model');
+const { ObjectID } = require('mongodb');
 
 class CategoriesData extends BaseData {
     constructor(db) {
         super(db, Category);
+    }
+
+    pullById(id) {
+        return this.collection
+            // eslint-disable-next-line new-cap
+            .update({}, { $pull: { articles: { _id: ObjectID(id) } } } );
     }
 
     updateById(model, value) {
