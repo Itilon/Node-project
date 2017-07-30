@@ -11,10 +11,10 @@
 }
 #logo a {
     color: #FFFFFF;
-    transition: 4s all;
-	  -webkit-transition: 4s all;
-	  -moz-transition: 4s all;
-	  -o-transition: 4s all;
+    transition: 2s all;
+	  -webkit-transition: 2s all;
+	  -moz-transition: 2s all;
+	  -o-transition: 2s all;
 }
 #logo a:link, #logo a:visited {
     color: #FFFFFF;
@@ -37,14 +37,31 @@
     font-size: 16px;
     color: #FFFFFF;
     text-decoration: none;
-    transition: 4s all;
-	  -webkit-transition: 4s all;
-	  -moz-transition: 4s all;
-	  -o-transition: 4s all;
+    transition: 2s all;
+	  -webkit-transition: 2s all;
+	  -moz-transition: 2s all;
+	  -o-transition: 2s all;
 }
 #dropdown a:hover {
     color: #F53F1A;
 }
 #dropdown-menu li a {
     color: #000000;
+}
+
+/* On smaller screens: */
+
+@media (max-width: 768px) {
+    #logo {
+        text-align: center;
+        margin-left: 0;
+    }
+    #search-form {
+        margin-right: auto;
+        margin-left: auto;
+        border: 1px solid white;
+    }
+    #dropdown {
+        margin-bottom: 12px;
+    }
 }

@@ -1,7 +1,7 @@
 /* globals $ */
 
 const button = $('#create-button');
-const form = $('#logup-form');
+const form = $('#signup-form');
 
 button.click( () => {
     button.fadeOut(1200, () => {

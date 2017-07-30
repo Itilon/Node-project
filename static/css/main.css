@@ -238,10 +238,10 @@ h2.form-title, h2.login-form-title {
 p.login-form-text {
     margin-bottom: 40px;
 }
-#login-form input, #logup-form input {
+#login-form input, #signup-form input {
     margin-bottom: 8px;
 }
-#login-form input:focus, #logup-form input:focus {
+#login-form input:focus, #signup-form input:focus {
     outline: none;
     box-shadow: none;
 }
@@ -251,7 +251,7 @@ label:nth-child(3) {
 #login-form {
     margin-left: 0;
 }
-#logup-form {
+#signup-form {
     display: none;
 }
 .button {

@@ -79,7 +79,6 @@ nav.cl-effect a:focus::after {
 	transform: translateX(0px);
 }
 
-
 /* On smaller screens: */
 
 @media (max-width: 1140px) {

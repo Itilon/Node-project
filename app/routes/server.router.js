@@ -120,20 +120,14 @@ const attach = (app, data) => {
             const searchTerm = req.query.search;
             return data.posts
                 .filterBy(
-                    {
-                        title: { '$regex': searchTerm, '$options': 'i' },
-                    }
+                    { title: { '$regex': searchTerm, '$options': 'i' } }
                 )
                 .then((results) => {
                     return data.posts
                     .filterBy(
-                        {
-                            content: { '$regex': searchTerm, '$options': 'i' },
-                        }
+                        { content: { '$regex': searchTerm, '$options': 'i' } }
                     )
                     .then((postsFound) => {
-                        console.log(results);
-                        console.log(postsFound);
                         if (results.length === 0 && postsFound.length === 0) {
                             return res.redirect('/404');
                         }
