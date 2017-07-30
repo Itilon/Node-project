@@ -116,11 +116,21 @@ img.post-img {
     margin: 4px;
     padding: 36px;
 }
-a.button {
-    display: block;
+div.col-sm-2 form, div.update-button {
+    border: 1px solid #000000;
+}
+div.update-button {
     margin-top: 24px;
     margin-bottom: 12px;
+}
+button.del-button {
+    display: block;
+    width: 100%;
+}
+a.button {
+    display: block;
     text-align: center;
+    margin: 1px;
 }
 a.button:hover {
     color: #FFFFFF;
