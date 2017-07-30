@@ -20,7 +20,8 @@ const init = (data) => {
             res.render('401');
         });
 
-    require('./routes')(app, data);
+    const controllers = require('../controllers')(data);
+    require('./routes')(app, controllers);
 
     return Promise.resolve(app);
 };

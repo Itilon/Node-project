@@ -5,15 +5,12 @@ const { Router } = require('express');
 //     name: 'Pesho',
 // }];
 
-const attach = (app, data) => {
+const attach = (app, controllers) => {
     const router = new Router();
+
+    const postController = controllers.postController;
     router
-        .get('/categories', (req, res) => {
-            return data.categories.getAll()
-                .then((cats) => {
-                    return res.send(cats);
-                });
-        });
+        .get('/categories', postController.getCategories);
 
     //     .get('/:id', (req, res) => {
     //         const id = parseInt(req.params.id, 10);
