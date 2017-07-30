@@ -1,5 +1,5 @@
 module.exports = (data) => {
-    function getHome(req, res) {
+    const getHome = (req, res) => {
         const latestArticlesNumber = 4;
         data.posts.getSome(latestArticlesNumber)
             .then((posts) => {
@@ -11,21 +11,21 @@ module.exports = (data) => {
                         });
                     });
             });
-    }
+    };
 
-    function getAbout(req, res) {
+    const getAbout = (req, res) => {
         res.render('about');
-    }
+    };
 
-    function getLogin(req, res) {
+    const getLogin = (req, res) => {
         res.render('login');
-    }
+    };
 
-    function getContact(req, res) {
+    const getContact = (req, res) => {
         res.render('contact');
-    }
+    };
 
-    function getPostById(req, res) {
+    const getPostById = (req, res) => {
         const id = req.params.id;
         const latestArticlesNumber = 4;
         if (id.length !== 24) {
@@ -50,10 +50,10 @@ module.exports = (data) => {
                             });
                     });
             });
-    }
+    };
 
 
-    function getCategoryById(req, res) {
+    const getCategoryById = (req, res) => {
         const id = req.params.id;
         const latestArticlesNumber = 4;
         if (id.length !== 24) {
@@ -78,9 +78,9 @@ module.exports = (data) => {
                             });
                     });
             });
-    }
+    };
 
-    function getAuthorByName(req, res) {
+    const getAuthorByName = (req, res) => {
         const author = req.params.author;
         const latestArticlesNumber = 4;
         return data.users.findByUsername(author)
@@ -93,7 +93,6 @@ module.exports = (data) => {
                     .then((categories) => {
                         return data.posts.getSome(latestArticlesNumber)
                             .then((posts) => {
-                                console.log(foundAuthor);
                                 res.render('author', {
                                     author: foundAuthor,
                                     authorPosts: foundAuthor.posts,
@@ -103,8 +102,9 @@ module.exports = (data) => {
                             });
                     });
             });
-    }
-    function getSearch(req, res) {
+    };
+
+    const getSearch = (req, res) => {
         const searchTerm = req.query.search;
         const latestArticlesNumber = 4;
         return data.posts
@@ -137,8 +137,9 @@ module.exports = (data) => {
                             });
                     });
             });
-    }
-    function getTag(req, res) {
+    };
+
+    const getTag = (req, res) => {
         const tag = req.params.tag;
         const latestArticlesNumber = 4;
 
@@ -161,13 +162,15 @@ module.exports = (data) => {
                             });
                     });
             });
-    }
-    function getCategories(req, res) {
+    };
+
+    const getCategories = (req, res) => {
         return data.categories.getAll()
             .then((cats) => {
                 return res.send(cats);
             });
-    }
+    };
+
     return {
         getHome,
         getAbout,

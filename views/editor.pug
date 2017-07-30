@@ -11,12 +11,12 @@ block body
                 h1
                     | Add a New Post
                 form(action="/edit" method="post" enctype="multipart/form-data")
-                    input(id="title" name="title" placeholder="Enter the post title here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter the post title here'")
+                    input(id="title" name="title" placeholder="Enter the post title here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter the post title here'" required)
                     div
                         label(for="file" class="button")
                             | Add Media
-                        input(id="file" type="file" name="file" placeholder="Add Media")
-                        input(id="category" name="category" placeholder="Enter the post category here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter the post category here'" autocomplete="off")
+                        input(id="file" type="file" name="file" placeholder="Add Media" required)
+                        input(id="category" name="category" placeholder="Enter the post category here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter the post category here'" autocomplete="off" required)
                         input(id="tags" name="tags" placeholder="Enter the post tags here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter the post tags here'")
                     textarea(id="content" name="content" placeholder="Enter the text of your post here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter the text of your post here'")
                     div

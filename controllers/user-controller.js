@@ -1,7 +1,7 @@
 const passport = require('passport');
 
 module.exports = (data) => {
-    function signUp(req, res) {
+    const signUp = (req, res) => {
         const user = req.body;
 
         user.posts = [];
@@ -11,13 +11,13 @@ module.exports = (data) => {
                 console.log(dbItem);
                 res.redirect('/login');
             });
-    }
+    };
 
-    function login(req, res) {
+    const login = (req, res) => {
         res.render('login', { 'isAutenticated': false });
-    }
+    };
 
-    function signIn(req, res, next) {
+    const signIn = (req, res, next) => {
         const auth = passport.authenticate('local', (error, user) => {
             if (error) {
                 next(error);
@@ -35,9 +35,9 @@ module.exports = (data) => {
         });
 
         auth(req, res, next);
-    }
+    };
 
-    function getDashboard(req, res) {
+    const getDashboard = (req, res) => {
         if (!req.isAuthenticated()) {
             return res.redirect('/401');
         }
@@ -46,9 +46,9 @@ module.exports = (data) => {
         return res.render('dashboard', {
             user: user,
         });
-    }
+    };
 
-    function getEditor(req, res) {
+    const getEditor = (req, res) => {
         if (!req.isAuthenticated()) {
             return res.redirect('/401');
         }
@@ -57,30 +57,43 @@ module.exports = (data) => {
         return res.render('editor', {
             user: user,
         });
-    }
+    };
 
-    function getArticles(req, res) {
+    const getArticles = (req, res) => {
         if (!req.isAuthenticated()) {
             return res.redirect('/401');
         }
         const user = req.user;
 
-        console.log(user);
-
         return res.render('articles', {
             user: user,
         });
-    }
+    };
 
-    function getLogout(req, res) {
+    const getLogout = (req, res) => {
         if (!req.isAuthenticated()) {
             return res.redirect('/401');
         }
         req.logout();
         return res.redirect('/login');
-    }
+    };
 
-    function postEdit(req, res) {
+    const postDelete = (req, res) => {
+        const id = req.body.id;
+        return data.posts.deleteById(id)
+            .then(() => {
+                // eslint-disable-next-line new-cap
+                return data.users.pullById(id)
+                    .then(() => {
+                        return data.categories.pullById(id)
+                            .then(() => {
+                                res.redirect('/articles');
+                            });
+                    });
+            });
+    };
+
+    const postEdit = (req, res) => {
         const post = req.body;
         const userId = req.session.passport.user;
         const file = req.files.file;
@@ -154,22 +167,8 @@ module.exports = (data) => {
                             });
                     });
             });
-    }
+    };
 
-    function postDelete(req, res) {
-        const id = req.body.id;
-        return data.posts.deleteById(id)
-            .then(() => {
-                // eslint-disable-next-line new-cap
-                return data.users.pullById(id)
-                    .then(() => {
-                        return data.categories.pullById(id)
-                            .then(() => {
-                                res.redirect('/articles');
-                            });
-                    });
-            });
-    }
     return {
         signUp,
         login,
@@ -178,7 +177,7 @@ module.exports = (data) => {
         getEditor,
         getArticles,
         getLogout,
-        postEdit,
         postDelete,
+        postEdit,
     };
 };

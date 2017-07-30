@@ -18,9 +18,9 @@ const attach = (app, controllers) => {
 
         .get('/logout', userController.getLogout)
 
-        .post('/edit', userController.postEdit)
+        .post('/delete', userController.postDelete)
 
-        .post('/delete', userController.postDelete);
+        .post('/edit', userController.postEdit);
 
     app.use(flash());
     app.use('/', router);
