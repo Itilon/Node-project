@@ -51,15 +51,8 @@ class BaseData {
 
     // To move in a child:
 
-    updateById(model, value) {
-    }
-
     _getCollectionName() {
        return this.modelClass.name.toLowerCase() + 's';
-    }
-
-    _isModelValid(model) {
-        return this.validator.isValid(model);
     }
 }
 module.exports = BaseData;
