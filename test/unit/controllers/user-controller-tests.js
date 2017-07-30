@@ -88,7 +88,7 @@ describe('User controller tests', () => {
                 });
         });
     });
-        describe('getDashboard tests', () => {
+    describe('getDashboard tests', () => {
         // eslint-disable-next-line max-len
         it('should redirect to /401 if user is not autenticated server', () => {
             controller.getDashboard(req, res);
@@ -103,7 +103,7 @@ describe('User controller tests', () => {
             done();
         });
     });
-            describe('getEditor tests', () => {
+    describe('getEditor tests', () => {
         // eslint-disable-next-line max-len
         it('should redirect to /401 if user is not autenticated server', () => {
             controller.getEditor(req, res);
@@ -117,20 +117,20 @@ describe('User controller tests', () => {
             expect(res.viewName).to.be.equal('editor');
             done();
         });
-                describe('getArticles tests', () => {
-        // eslint-disable-next-line max-len
-        it('should redirect to /401 if user is not autenticated server', () => {
-            controller.getArticles(req, res);
-            expect(res.redirectUrl).to.be.equal('/401');
-        });
+        describe('getArticles tests', () => {
+            // eslint-disable-next-line max-len
+            it('should redirect to /401 if user is not autenticated server', () => {
+                controller.getArticles(req, res);
+                expect(res.redirectUrl).to.be.equal('/401');
+            });
 
-        // eslint-disable-next-line max-len
-        it('should render dashboard template if user is autenticated', (done) => {
-            req.login({ username: 'someUsername', password: '123456' });
-            controller.getArticles(req, res);
-            expect(res.viewName).to.be.equal('articles');
-            done();
+            // eslint-disable-next-line max-len
+            it('should render dashboard template if user is autenticated', (done) => {
+                req.login({ username: 'someUsername', password: '123456' });
+                controller.getArticles(req, res);
+                expect(res.viewName).to.be.equal('articles');
+                done();
+            });
         });
-    });
     });
 });
