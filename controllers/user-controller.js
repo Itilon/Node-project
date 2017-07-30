@@ -89,21 +89,6 @@ module.exports = (data) => {
         return res.redirect('/login');
     };
 
-    const postDelete = (req, res) => {
-        const id = req.body.id;
-        return data.posts.deleteById(id)
-            .then(() => {
-                // eslint-disable-next-line new-cap
-                return data.users.pullById(id)
-                    .then(() => {
-                        return data.categories.pullById(id)
-                            .then(() => {
-                                res.redirect('/articles');
-                            });
-                    });
-            });
-    };
-
     const postEdit = (req, res) => {
         const post = req.body;
         const userId = req.session.passport.user;
@@ -180,6 +165,26 @@ module.exports = (data) => {
             });
     };
 
+    const postDelete = (req, res) => {
+        const id = req.body.id;
+        const userId = req.user._id;
+        return data.posts.findById(id)
+            .then((post) => {
+                const category = post.category;
+
+                return data.users.pullById(userId, id)
+                    .then(() => {
+                        return data.categories.pullById(category, id)
+                        .then(() => {
+                            return data.posts.deleteById(id)
+                                .then(() => {
+                                    res.redirect('/articles');
+                                });
+                        });
+                    });
+            });
+    };
+
     return {
         signUp,
         login,
@@ -189,7 +194,7 @@ module.exports = (data) => {
         getEditor,
         getArticles,
         getLogout,
-        postDelete,
         postEdit,
+        postDelete,
     };
 };

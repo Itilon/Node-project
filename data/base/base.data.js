@@ -54,10 +54,11 @@ class BaseData {
         return this.collection.remove({ _id: ObjectID(id) });
     }
 
-    pullById(id) {
+    pullById(userId, id) {
         return this.collection
-            // eslint-disable-next-line new-cap
-            .update({}, { $pull: { posts: { _id: ObjectID(id) } } } );
+            .updateOne( { _id: userId },
+                // eslint-disable-next-line new-cap
+                { $pull: { posts: { _id: ObjectID(id) } } } );
     }
 
     _getCollectionName() {

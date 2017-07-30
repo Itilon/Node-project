@@ -7,10 +7,11 @@ class CategoriesData extends BaseData {
         super(db, Category);
     }
 
-    pullById(id) {
+    pullById(category, id) {
         return this.collection
-            // eslint-disable-next-line new-cap
-            .update({}, { $pull: { articles: { _id: ObjectID(id) } } } );
+            .updateOne( { name: category },
+                // eslint-disable-next-line new-cap
+                { $pull: { articles: { _id: ObjectID(id) } } } );
     }
 
     updateById(model, value) {
