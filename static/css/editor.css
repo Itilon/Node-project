@@ -119,6 +119,9 @@ img.post-img {
 div.col-sm-2 form, div.update-button {
     border: 1px solid #000000;
 }
+div.col-sm-2 form {
+    margin-top: 24px;
+}
 div.update-button {
     margin-top: 24px;
     margin-bottom: 12px;
@@ -134,4 +137,21 @@ a.button {
 }
 a.button:hover {
     color: #FFFFFF;
+}
+
+/* On smaller screens: */
+
+@media (max-width: 768px) {
+    #editor, #article-page {
+        margin-right: 0;
+    }
+    form div {
+        padding-right: 0;
+    }
+    #category, #tags {
+        width: 100%;
+        margin-top: 12px;
+        margin-left: 0;
+        margin-bottom: 12px;
+    }
 }
