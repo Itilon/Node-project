@@ -122,3 +122,6 @@ a.button {
     margin-bottom: 12px;
     text-align: center;
 }
+a.button:hover {
+    color: #FFFFFF;
+}
