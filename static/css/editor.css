@@ -61,7 +61,7 @@ main.no-container {
   text-decoration: none;
 }
 .button:hover {
-  background: #F53f1A;
+  background: #F53F1A;
   text-decoration: none;
   cursor: pointer;
 }
@@ -93,4 +93,32 @@ div.post-container {
     margin-left: auto;
     margin-bottom: 16px;
     border-bottom: 1px dashed #26313B;
+}
+h2.post-title a {
+    color: #000000;
+    transition: 1.6s all;
+	-webkit-transition: 1.6s all;
+	-moz-transition: 1.6s all;
+	-o-transition: 1.6s all;
+}
+h2.post-title a:link, h2.post-title a:visited {
+    color: #000000;
+    text-decoration: none;
+}
+h2.post-title a:hover {
+    color: #F53F1A;
+    text-decoration: none;
+}
+p.post {
+    text-align: justify;
+}
+img.post-img {
+    margin: 4px;
+    padding: 36px;
+}
+a.button {
+    display: block;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    text-align: center;
 }

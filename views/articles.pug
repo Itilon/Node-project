@@ -9,8 +9,18 @@ block body
             h1
                 | My Articles:
             each post in user.posts
-                div(class="post-container")
-                    h2(id="article-title" class="post-title")
-                        = post.title
-                    p(class="post")
-                        = post.content
+                div(class="post-container row")
+                    div(class="col-sm-4")
+                        a(href="/post/" + post._id)
+                            img(src=post.url class="img-responsive post-img")
+                    div(class="col-sm-6")
+                        h2(id="article-title" class="post-title")
+                            a(href="/post/" + post._id)
+                                = post.title
+                        p(class="post")
+                            = post.content
+                    div(class="col-sm-2")
+                        a(href="#" class="button")
+                            | Delete post
+                        a(href="/editor" class="button")
+                            | Update post
