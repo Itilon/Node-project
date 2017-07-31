@@ -38,7 +38,7 @@ describe('url that requires user to be logged in', () => {
                 return done();
             });
     });
-        it('GET /articles', (done) => {
+    it('GET /articles', (done) => {
         server
             .get('/articles')
             .expect(200)

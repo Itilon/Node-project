@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const chai = require('chai');
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
@@ -8,11 +9,18 @@ const { getRequestMock, getResponseMock } = require('../mocks/req_res');
 const data = {
     posts: {
         create() { },
-        deleteById() { },
+        deleteById() {
+            return Promise.resolve();
+        },
+        findById() {
+            return Promise.resolve();
+        },
     },
     users: {
         create() { },
-        findById() { },
+        findById() {
+            return Promise.resolve();
+        },
         updateById() { },
         pullById() { },
     },
@@ -20,10 +28,12 @@ const data = {
         findByName() { },
         create() { },
         updateById() { },
-        pullById() { },
+        pullById() {
+            return Promise.resolve();
+        },
     },
 };
-const controller = require('../../../controllers/user-controller')(data);
+const controller = require('../../../controllers/user.controller')(data);
 
 describe('User controller tests', () => {
     let req;
@@ -103,6 +113,7 @@ describe('User controller tests', () => {
             done();
         });
     });
+
     describe('getEditor tests', () => {
         // eslint-disable-next-line max-len
         it('should redirect to /401 if user is not autenticated server', () => {
@@ -117,20 +128,99 @@ describe('User controller tests', () => {
             expect(res.viewName).to.be.equal('editor');
             done();
         });
-        describe('getArticles tests', () => {
-            // eslint-disable-next-line max-len
-            it('should redirect to /401 if user is not autenticated server', () => {
-                controller.getArticles(req, res);
-                expect(res.redirectUrl).to.be.equal('/401');
-            });
+    });
 
-            // eslint-disable-next-line max-len
-            it('should render dashboard template if user is autenticated', (done) => {
-                req.login({ username: 'someUsername', password: '123456' });
-                controller.getArticles(req, res);
-                expect(res.viewName).to.be.equal('articles');
-                done();
-            });
+    describe('getArticles tests', () => {
+        // eslint-disable-next-line max-len
+        it('should redirect to /401 if user is not autenticated server', () => {
+            controller.getArticles(req, res);
+            expect(res.redirectUrl).to.be.equal('/401');
+        });
+
+        // eslint-disable-next-line max-len
+        it('should render dashboard template if user is autenticated', (done) => {
+            req.login({ username: 'someUsername', password: '123456' });
+            controller.getArticles(req, res);
+            expect(res.viewName).to.be.equal('articles');
+            done();
+        });
+    });
+
+    describe('getProfile tests', () => {
+        // eslint-disable-next-line max-len
+        it('should redirect to /401 if user is not autenticated server', () => {
+            controller.getProfile(req, res);
+            expect(res.redirectUrl).to.be.equal('/401');
+        });
+
+        // eslint-disable-next-line max-len
+        it('should render dashboard template if user is autenticated', (done) => {
+            req.login({ username: 'someUsername', password: '123456' });
+            controller.getProfile(req, res);
+            expect(res.viewName).to.be.equal('profile');
+            done();
+        });
+    });
+
+    describe('postDelete tests', () => {
+        it('Should call data posts findById', (done) => {
+            req.user._id = '123456789123456789123456';
+            const category = 'Random';
+
+            const stubPostFindById = sinon.stub(data.posts, 'findById')
+                .returns(Promise.resolve(category));
+
+            const stubUsersPullById = sinon.stub(data.users, 'pullById')
+                .returns(Promise.resolve());
+
+            const stubCategoryPullById = sinon.stub(data.categories, 'pullById')
+                .returns(Promise.resolve());
+
+            controller.postDelete(req, res)
+                .then(() => {
+                    // eslint-disable-next-line no-unused-expressions
+                    expect(stubPostFindById).to.be.calledOnce;
+                    // eslint-disable-next-line no-unused-expressions
+                    expect(stubUsersPullById).to.be.calledOnce;
+                    // eslint-disable-next-line no-unused-expressions
+                    expect(stubCategoryPullById).to.be.calledOnce;
+                    stubPostFindById.restore();
+                    stubUsersPullById.restore();
+                    stubCategoryPullById.restore();
+                    done();
+                })
+                .catch((error) => {
+                    stubPostFindById.restore();
+                    done(error);
+                });
+        });
+
+        it('Should redirect to /articles after postDelete', (done) => {
+            req.body.id = '123456789123456789123456';
+            req.user._id = '123456789123456789123456';
+            const category = 'Random';
+
+            const stubPostFindById = sinon.stub(data.posts, 'findById')
+                .returns(Promise.resolve(category));
+
+            const stubUsersPullById = sinon.stub(data.users, 'pullById')
+                .returns(Promise.resolve());
+
+            const stubCategoryPullById = sinon.stub(data.categories, 'pullById')
+                .returns(Promise.resolve());
+
+            controller.postDelete(req, res)
+                .then(() => {
+                    expect(res.redirectUrl).to.be.equal('/articles');
+                    stubPostFindById.restore();
+                    stubUsersPullById.restore();
+                    stubCategoryPullById.restore();
+                    done();
+                })
+                .catch((error) => {
+                    stubPostFindById.restore();
+                    done(error);
+                });
         });
     });
 });

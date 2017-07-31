@@ -165,7 +165,7 @@ describe('/home tests', () => {
                 });
         });
     });
-    describe('GET /categories - first Category', () => {
+    describe('GET /category - first Category', () => {
         it('expect to return 200', (done) => {
             request(app)
                 .get('/category/597afc1796459dd18951e326')

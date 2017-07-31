@@ -1,5 +1,6 @@
 const getRequestMock = (options = {}) => {
     const req = {
+        params: {},
         body: {},
         user: '',
         _isAuthenticated: false,
