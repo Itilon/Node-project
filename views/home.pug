@@ -14,15 +14,28 @@ block body
                                     =post.title 
                                 p
                                     =post.content[0]
-                div(id="left-col" class="col-sm-6")
-                    h2
-                    | Fourth Article Title
-                    h2
-                    | Sixth Article Title
-                div(id="right-col" class="col-sm-6")
-                    h2
-                    | Fifth Article Title
-                    h2
-                    | Seventh Article Title
+                div(id="older-article-container" class="row")
+                    - let num = 0
+                        while num < 4
+                            - if (typeof (olderPosts[num]) !== "undefined")
+                                div(id="left-col" class="col-sm-6")
+                                    h2
+                                        a(href="/post/" + olderPosts[num]._id)
+                                            = olderPosts[num].title
+                                    img(src=olderPosts[num].url)
+                                    p
+                                        = olderPosts[num].content[0]
+                                        - num++
+                            - if (typeof (olderPosts[num]) !== "undefined")
+                                div(id="right-col" class="col-sm-6")                      
+                                    h2
+                                        a(href="/post/" + olderPosts[num]._id)
+                                            = olderPosts[num].title
+                                    img(src=olderPosts[num].url)
+                                    p
+                                        = olderPosts[num].content[0]
+                                        - num++
+                            - else
+                                - num++
             +aside(model, categories)
                     

@@ -68,15 +68,41 @@ div.caption p {
     text-overflow: ellipsis;
     margin-top: 12px;
 }
-#right-col, #left-col {
-    border-top: 1px solid #A9A9A9;
-    border-bottom: 1px solid #A9A9A9;
+#older-article-container {
+    margin-right: 0;
+    margin-left: 0;
+    border: 1px solid #A9A9A9;
 }
-#right-col {
-    border-right: 1px solid #A9A9A9;
+#right-col a, #left-col a {
+    color: #000000;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: inline;
+    transition: 0.8s all;
+	  -webkit-transition: 0.8s all;
+	  -moz-transition: 0.8s all;
+	  -o-transition: 0.8s all;
 }
-#left-col {
-    border-left: 1px solid #A9A9A9;
+#right-col a:link,
+#right-col a:visited,
+#left-col a:link,
+#left-col a:visited {
+    text-decoration: none;
+}
+#right-col a:hover, #left-col a:hover {
+    color: #F53F1A;
+    text-decoration: none;
+}
+#right-col img, #left-col img {
+    float: left;
+    width: 40%;
+    margin-right: 8px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+}
+#right-col p, #left-col p {
+    text-align: justify;
 }
 
 /* Post page: */

@@ -1,12 +1,15 @@
 module.exports = (data) => {
     const getHome = (req, res) => {
-        const latestArticlesNumber = 4;
+        const latestArticlesNumber = 8;
         data.posts.getSome(latestArticlesNumber)
             .then((posts) => {
+                const olderPosts = posts.splice(4, 4);
+
                 return data.categories.getAll()
                     .then((categories) => {
                         res.render('home', {
                             model: posts,
+                            olderPosts: olderPosts,
                             categories: categories,
                         });
                     });
