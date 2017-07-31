@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const { expect } = require('chai');
 const { setupDriver } = require('../utils/setup-driver');
 const webdriver = require('selenium-webdriver');

@@ -31,14 +31,5 @@ describe('Home routes', () => {
                     expect(text).to.deep.equal('Latest Posts');
                 });
         });
-        it('expect to have the latest category updated', () => {
-            return async()
-                .then(() => ui.click('#btn-nav-home'))
-                .then(() => ui.getTexts('#category-list'))
-                .then((texts) => texts.slice(-1)[0])
-                .then((text) => {
-                    expect(text).to.include('Something Random');
-                });
-        });
     });
 });
