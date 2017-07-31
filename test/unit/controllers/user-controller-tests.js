@@ -53,7 +53,7 @@ describe('User controller tests', () => {
         it('Login should render login.pug template with isAutenticated property equal to false', () => {
             controller.login(req, res);
             const context = {
-                'isAutenticated': false,
+                'isAuthenticated': false,
             };
             expect(res.context).to.be.deep.equal(context);
         });
@@ -221,6 +221,23 @@ describe('User controller tests', () => {
                     stubPostFindById.restore();
                     done(error);
                 });
+        });
+    });
+        describe('getUpdate tests', () => {
+        it('should redirect when not autenticated', () => {
+            controller.getUpdate(req, res);
+            expect(req.isAuthenticated()).to.be.equal(false);
+        });
+
+        it('get update should be called with riht params', () => {
+            req.login({ username: 'someUsername', password: '123456' });
+
+            req.params.id = '14';
+            const StubFindById = sinon.stub(data.posts, 'findById')
+            .returns(Promise.resolve(req.params.id));
+            controller.getUpdate(req, res);
+            // eslint-disable-next-line no-unused-expressions
+            expect(StubFindById).to.have.been.calledOnce;
         });
     });
 });
