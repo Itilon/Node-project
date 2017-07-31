@@ -43,9 +43,9 @@ class BaseData {
     }
 
     create(model) {
-        /* if (!this._isModelValid(model)) {
-            return Promise.reject('Invalid model');
-        } */
+        // if (!this._isModelValid(model)) {
+        //     return Promise.reject('Invalid model');
+        // }
         return this.collection.insert(model);
     }
 
