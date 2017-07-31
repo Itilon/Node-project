@@ -15,6 +15,9 @@ class CategoriesData extends BaseData {
     }
 
     updateById(model, value) {
+        // eslint-disable-next-line new-cap
+        value._id = ObjectID(value._id);
+
         return this.collection.updateOne(
             { _id: model._id },
             { $push:

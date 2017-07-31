@@ -14,7 +14,7 @@ module.exports = (data) => {
     };
 
     const login = (req, res) => {
-        res.render('login', { 'isAutenticated': false });
+        res.render('login', { 'isAuthenticated': false });
     };
 
     const signIn = (req, res, next) => {
@@ -79,6 +79,22 @@ module.exports = (data) => {
         return res.render('articles', {
             user: user,
         });
+    };
+
+    const getUpdate = (req, res) => {
+        if (!req.isAuthenticated()) {
+            return res.redirect('/401');
+        }
+        const user = req.user;
+        const postId = req.params.id;
+
+        return data.posts.findById(postId)
+            .then((post) => {
+                return res.render('update', {
+                    user: user,
+                    post: post,
+                });
+            });
     };
 
     const getLogout = (req, res) => {
@@ -165,6 +181,56 @@ module.exports = (data) => {
             });
     };
 
+    const postUpdate = (req, res) => {
+        const id = req.body.id;
+        const title = req.body.title;
+        const category = req.body.category;
+        const tags = req.body.tags.split('\r\n');
+        const content = req.body.content.split('\r\n');
+        const author = req.body.author;
+        const date = req.body.date;
+
+        let url = req.body.url;
+
+        const file = req.files.file;
+        if (typeof(file) !== 'undefined') {
+            file.mv('./static/images/' + file.name);
+            url = '/static/images/' + file.name;
+        }
+
+        return data.posts
+            .update(id, title, category, tags, content, author, date, url)
+            .then(() => {
+                return data.users.findByUsername(author)
+                    .then((user) => {
+                        const userId = user._id;
+                        return data.users.pullById(userId, id)
+                            .then(() => {
+                                const article = {};
+                                article._id = id;
+                                article.title = title;
+                                article.content = content[0];
+                                article.url = url;
+                                return data.users
+                                    .updateById(user, article)
+                                    .then(() => {
+                                        return data.categories
+                                            .pullById(userId, id)
+                                            .then(() => {
+                                                return data.categories
+                                                    .updateById(user, article)
+                                                    .then(() => {
+                                                        res
+                                                        .redirect('/articles');
+                                                    });
+                                            });
+                                    });
+                            });
+                    });
+            });
+    };
+
+
     const postDelete = (req, res) => {
         const id = req.body.id;
         const userId = req.user._id;
@@ -193,8 +259,10 @@ module.exports = (data) => {
         getProfile,
         getEditor,
         getArticles,
+        getUpdate,
         getLogout,
         postEdit,
+        postUpdate,
         postDelete,
     };
 };

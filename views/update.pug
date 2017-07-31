@@ -1,0 +1,32 @@
+extends shared/_dashmaster
+include shared/_dashboard_navigation
+block head_scripts
+    script(src="/libs/bootstrap-3-typeahead/bootstrap3-typeahead.js")
+    script(src="/static/scripts/editor.js")
+block body
+    main(class="no-container row")
+        +dashboard_navigation
+        div(class="col-sm-10")
+            div(id="editor" )
+                h1
+                    | Update Your Post
+                form(action="/update" method="post" enctype="multipart/form-data")
+                    input(type="hidden" name="id" value=post._id)
+                    input(type="hidden" name="url" value=post.url)
+                    input(type="hidden" name="author" value=post.author)
+                    input(type="hidden" name="date" value=post.date)
+                    input(id="title" name="title" placeholder="Enter the post title here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter the post title here'" value=post.title required)
+                    div
+                        label(for="file" class="button")
+                            | Add Media
+                        input(id="file" type="file" name="file" placeholder="Add Media")
+                        input(id="category" name="category" placeholder="Enter the post category here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter the post category here'" autocomplete="off" value=post.category required)
+                        if !post.tags
+                            input(id="tags" name="tags" placeholder="Enter the post tags here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter the post tags here'")
+                        else
+                            input(id="tags" name="tags" placeholder="Enter the post tags here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter the post tags here'" value=post.tags.join(", "))
+                    textarea(id="content" name="content" placeholder="Enter the text of your post here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter the text of your post here'")
+                        = post.content.join("\r\n")
+                    div
+                        button(id="submit-button" class="button" type="submit")
+                            | Submit

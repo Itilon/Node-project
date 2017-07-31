@@ -19,9 +19,13 @@ const attach = (app, controllers) => {
 
         .get('/articles', userController.getArticles)
 
+        .get('/update/:id', userController.getUpdate)
+
         .get('/logout', userController.getLogout)
 
         .post('/edit', userController.postEdit)
+
+        .post('/update', userController.postUpdate)
 
         .post('/delete', userController.postDelete);
 

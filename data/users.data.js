@@ -1,5 +1,6 @@
 const BaseData = require('./base/base.data');
 const User = require('../models/user.model');
+const { ObjectID } = require('mongodb');
 
 class UsersData extends BaseData {
     constructor(db) {
@@ -30,6 +31,9 @@ class UsersData extends BaseData {
     }
 
     updateById(model, value) {
+        // eslint-disable-next-line new-cap
+        value._id = ObjectID(value._id);
+
         return this.collection.updateOne(
             { _id: model._id },
             { $push:
