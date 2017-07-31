@@ -2,7 +2,7 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const morgan = require('morgan');
+// const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
 
 const configApp = (app) => {
@@ -23,15 +23,15 @@ const configApp = (app) => {
     app.use(fileUpload());
 
     // Custom middleware:
-    app.use((req, res, done) => {
-        const start = new Date();
+    // app.use((req, res, done) => {
+    //     const start = new Date();
 
-        req.on('end', () => {
-            const end = new Date();
-            console.log(`Execution time: ${end - start}`);
-        });
-        done();
-    });
+    //     req.on('end', () => {
+    //         const end = new Date();
+    //         console.log(`Execution time: ${end - start}`);
+    //     });
+    //     done();
+    // });
 };
 
 module.exports = configApp;
