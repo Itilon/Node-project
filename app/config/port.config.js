@@ -1,5 +1,8 @@
-const port = 80;
-const connectionString = 'mongodb://172.31.44.130:27017/blogging-db';
+/* globals process */
+// eslint-disable-next-line no-process-env
+const port = process.env.PORT || 3001;
+
+const connectionString = 'mongodb://localhost/blogging-db';
 
 module.exports = {
     port,
