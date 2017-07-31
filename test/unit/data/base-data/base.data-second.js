@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 const { expect } = require('chai');
 
-const BaseData = require('../../../data/base/base.data');
+const BaseData = require('../../../../data/base/base.data');
 
 describe('Base-data tests', () => {
     let baseData;

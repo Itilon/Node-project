@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 
-const BaseData = require('../../../data/base/base.data');
+const BaseData = require('../../../../data/base/base.data');
 
 describe('Base-data tests', () => {
     let baseData;
@@ -8,10 +8,15 @@ describe('Base-data tests', () => {
     let ModelClass = null;
     let collection;
     let items;
-    const validator = null;
+    let validator;
 
     beforeEach(() => {
         items = [];
+        validator = {
+            isValid() {
+                return true;
+            },
+        };
 
         collection = {
             name: '',
@@ -32,6 +37,12 @@ describe('Base-data tests', () => {
             insert(model) {
                 items.push(model);
             },
+
+            remove(constraint) {
+                const id = constraint._id.toString();
+                const item = items.slice((el) => el === id);
+                return Promise.resolve(item);
+            },
         };
 
         db = {
@@ -42,7 +53,7 @@ describe('Base-data tests', () => {
         };
 
         ModelClass = class {
-                };
+        };
 
         baseData = new BaseData(db, ModelClass, validator);
     });
@@ -125,5 +136,30 @@ describe('Base-data tests', () => {
 
             expect(items).to.be.deep.equal([expected]);
         });
-    });
+
+        it('remove should remove an ellement from the collection', () => {
+            items = [
+                '5906f669b04a7f1dd47d7a31',
+                '5906f669b04a7f1dd47d7a32',
+                '5906f669b04a7f1dd47d7a33',
+                '5906f669b04a7f1dd47d7a34',
+                '5906f669b04a7f1dd47d7a35',
+            ];
+
+            const expected = '5906f669b04a7f1dd47d7a31';
+            baseData.deleteById(expected)
+                .then((item) => {
+                    expect(item.length).to.equal(4);
+                });
+        });
+        it('isModelValid should validate', () => {
+            const model = {
+                name: 'Random',
+                category: 'Random',
+            };
+
+           const validModel = baseData._isModelValid(model);
+            expect(validModel).to.equal(true);
+        });
+});
 });
