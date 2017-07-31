@@ -4,7 +4,7 @@ const { ObjectID } = require('mongodb');
 
 class CategoriesData extends BaseData {
     constructor(db) {
-        super(db, Category);
+        super(db, Category, Category);
     }
 
     pullById(category, id) {
