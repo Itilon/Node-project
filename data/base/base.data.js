@@ -37,9 +37,9 @@ class BaseData {
         const filter = {};
         const options = {};
         return this.collection.find(filter, options)
-                .sort({ _id: -1 })
-                .limit(number)
-                .toArray();
+            .sort({ _id: -1 })
+            .limit(number)
+            .toArray();
     }
 
     create(model) {
@@ -56,13 +56,22 @@ class BaseData {
 
     pullById(userId, id) {
         return this.collection
-            .updateOne( { _id: userId },
-                // eslint-disable-next-line new-cap
-                { $pull: { posts: { _id: ObjectID(id) } } } );
+            .updateOne({ _id: userId },
+            // eslint-disable-next-line new-cap
+            { $pull: { posts: { _id: ObjectID(id) } } });
     }
 
     _getCollectionName() {
-       return this.modelClass.name.toLowerCase() + 's';
+        return this.modelClass.name.toLowerCase() + 's';
+    }
+
+    _isModelValid(model) {
+        if (typeof this.validator === 'undefined' ||
+            typeof this.validator.isValid !== 'function') {
+            return true;
+        }
+
+        return this.validator.isValid(model);
     }
 }
 module.exports = BaseData;
