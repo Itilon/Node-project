@@ -41,8 +41,12 @@ describe('Post controller tests', () => {
     });
     describe('getHome tests', () => {
         const posts = {
-            bulgaria: 'bulgaria',
-            germany: 'germany',
+            somePost: 'Random',
+            AnotherPost: 'RandomAgain',
+        };
+        const categories = {
+            someCategory: 'Random',
+            AnotherCategory: 'AgainRandom',
         };
 
         let getAllStub;
@@ -52,7 +56,7 @@ describe('Post controller tests', () => {
             getSomeStub.returns(Promise.resolve(posts));
 
             getAllStub = sinon.stub(data.categories, 'getAll');
-            getAllStub.returns(Promise.resolve(posts));
+            getAllStub.returns(Promise.resolve(categories));
         });
 
         afterEach(() => {
@@ -192,6 +196,7 @@ describe('Post controller tests', () => {
 
             const StubGet = sinon.stub(data.categories, 'getAll')
                 .returns(Promise.resolve());
+
             controller.getAuthorByName(req, res)
                 .then(() => {
                     // eslint-disable-next-line no-unused-expressions
@@ -247,6 +252,7 @@ describe('Post controller tests', () => {
                     expect(filterByStub).to.be.calledOnce;
 
                     filterByStub.restore();
+                    getAllCategoriesStub.restore();
                 });
         });
     });
