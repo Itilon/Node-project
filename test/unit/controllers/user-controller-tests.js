@@ -15,6 +15,9 @@ const data = {
         findById() {
             return Promise.resolve();
         },
+        update() {
+            return Promise.resolve();
+        },
     },
     users: {
         create() { },
@@ -23,6 +26,7 @@ const data = {
         },
         updateById() { },
         pullById() { },
+        findByName() { },
     },
     categories: {
         findByName() { },
@@ -223,7 +227,7 @@ describe('User controller tests', () => {
                 });
         });
     });
-        describe('getUpdate tests', () => {
+    describe('getUpdate tests', () => {
         it('should redirect when not autenticated', () => {
             controller.getUpdate(req, res);
             expect(req.isAuthenticated()).to.be.equal(false);

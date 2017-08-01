@@ -260,4 +260,18 @@ describe('/home tests', () => {
                 });
         });
     });
+        describe('GET /401', () => {
+        it('expect to return 200', (done) => {
+            request(app)
+                .get('/401')
+                .expect(200)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+    });
 });
