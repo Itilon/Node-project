@@ -7,3 +7,5 @@ All registered and nonregistered users are able to read the articles, as well as
 Registered users are able to create, update and delete articles.
 
 Link to youtube video: https://www.youtube.com/watch?v=obCaXEOOylo
+
+Link to AWS: ec2-13-59-232-218.us-east-2.compute.amazonaws.com
