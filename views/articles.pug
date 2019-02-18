@@ -1,0 +1,29 @@
+extends shared/_dashmaster
+include shared/_dashboard_navigation
+
+block body
+    main(class="no-container row")
+        +dashboard_navigation
+        div(class="col-sm-10")
+            div(id="article-page")
+                h1
+                    | My Articles:
+                each post in user.posts
+                    div(class="post-container row")
+                        div(class="col-sm-4")
+                            a(href="/post/" + post._id)
+                                img(src=post.url class="img-responsive post-img")
+                        div(class="col-sm-6")
+                            h2(id="article-title" class="post-title")
+                                a(href="/post/" + post._id)
+                                    = post.title
+                            p(class="post")
+                                = post.content
+                        div(class="col-sm-2")
+                            form(action="/delete" method="post")
+                                input(type="hidden" value=post._id name="id")
+                                button(id="delete-btn" class="del-button button" type="submit")
+                                    | Delete post
+                            div(class="update-button")
+                                a(href="/update/" + post._id class="button")
+                                    | Update post

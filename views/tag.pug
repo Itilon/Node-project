@@ -1,0 +1,22 @@
+extends shared/_master
+include shared/_aside
+
+block body
+    div(id="main-content" class="container")
+        div(class="row")
+            main(id="main-category" class="col-sm-8")
+                div(id="category-header")
+                    h1
+                        ="Posts Tagged '" + tag + "'"
+                each post in taggedPosts
+                    div(id="category-row" class="row")
+                        div(class="col-sm-4")
+                            a(href="/post/" + post._id)
+                                img(src=post.url class="img-responsive cat-img")
+                        div(class="col-sm-8")
+                            h2
+                                a(href="/post/" + post._id)
+                                    =post.title
+                            p
+                                =post.content[0]
+            +aside(model, categories)

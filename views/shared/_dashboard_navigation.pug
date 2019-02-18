@@ -1,0 +1,16 @@
+mixin dashboard_navigation
+    div(class="col-sm-2")
+        nav(id="navigation")
+            ul
+                li
+                    a(href="/dashboard/" + user._id)
+                        | Dashboard
+                li
+                    a(id="btn-nav-profile" href="/profile")
+                        | My Profile
+                li
+                    a(id="btn-nav-articles" href="/articles")
+                        | My Articles
+                li
+                    a(id="btn-nav-editor" href="/editor")
+                        | Editor

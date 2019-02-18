@@ -1,41 +1,36 @@
+/* eslint-disable max-len */
 const { Router } = require('express');
 
-const items = [{
-    name: 'Mira',
-    id: 1,
-}, {
-    name: 'Viki',
-    id: 2,
-}, {
-    name: 'Ira',
-    id: 3,
-}];
-
-const attach = (app) => {
+const attach = (app, controllers) => {
     const router = new Router();
 
+    const postController = controllers.postController;
+    const userController = controllers.userController;
     router
-        .get('/', (req, res) => {
-            res.render('home');
+
+        // Catching the favicon request:
+        .get('/favicon.ico', function(req, res) {
+            res.status(204);
         })
 
-        .get('/all', (req, res) => {
-            res.render('all', {
-                model: items,
-            });
-        })
+        .get('/', postController.getHome)
 
-        .get('/:id', (req, res) => {
-            const id = parseInt(req.params.id, 10);
-            const item = items.find((i) => i.id === id);
+        .get('/about', postController.getAbout)
 
-            if (!item) {
-                return res.redirect('/404');
-            }
-            return res.render('detail', {
-                model: item,
-            });
-        });
+        .get('/login', userController.login)
+
+        .get('/contact', postController.getContact)
+
+        .get('/post/:id', postController.getPostById)
+
+        .get('/category/:id', postController.getCategoryById)
+
+        .get('/author/:author', postController.getAuthorByName)
+
+        .get('/search', postController.getSearch)
+
+        .get('/:tag', postController.getTag);
+
     app.use('/', router);
 };
 

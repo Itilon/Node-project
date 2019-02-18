@@ -1,5 +1,41 @@
 extends shared/_master
+include shared/_aside
 
 block body
-    h1  
-        | Home
+    div(id="main-content" class="container")
+        div(class="row")
+            main(id="main-page" class="col-sm-8")
+                each post in model
+                    div(class="thumbnail slide")
+                        a(href="/post/" + post._id)
+                            img(src=post.url class="img-responsive slide-img")
+                            div(class="caption")
+                                h2
+                                    =post.title 
+                                p
+                                    =post.content[0]
+                div(id="older-article-container" class="row")
+                    - let num = 0
+                        while num < 4
+                            - if (typeof (olderPosts[num]) !== "undefined")
+                                div(id="left-col" class="col-sm-6")
+                                    h2
+                                        a(href="/post/" + olderPosts[num]._id)
+                                            = olderPosts[num].title
+                                    img(src=olderPosts[num].url)
+                                    p
+                                        = olderPosts[num].content[0]
+                                        - num++
+                            - if (typeof (olderPosts[num]) !== "undefined")
+                                div(id="right-col" class="col-sm-6")                      
+                                    h2
+                                        a(href="/post/" + olderPosts[num]._id)
+                                            = olderPosts[num].title
+                                    img(src=olderPosts[num].url)
+                                    p
+                                        = olderPosts[num].content[0]
+                                        - num++
+                            - else
+                                - num++
+            +aside(model, categories)
+                    

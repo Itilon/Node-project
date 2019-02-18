@@ -1,0 +1,33 @@
+extends shared/_master
+include shared/_aside
+
+block body
+    div(id="main-content" class="container")
+        div(class="row")
+            main(id="main-category" class="col-sm-8")
+                div(id="category-header")
+                    h1(id="search-title")
+                        ="Search Results For: '" + searchTerm + "'"
+                each article in results
+                    div(id="category-row" class="row")
+                        div(class="col-sm-4")
+                            a(href="/post/" + article._id)
+                                img(src=article.url class="img-responsive cat-img")
+                        div(class="col-sm-8")
+                            h2
+                                a(href="/post/" + article._id)
+                                    =article.title
+                            p
+                                =article.content[0]
+                each article in postsFound
+                    div(id="category-row" class="row")
+                        div(class="col-sm-4")
+                            a(href="/post/" + article._id)
+                                img(src=article.url class="img-responsive cat-img")
+                        div(class="col-sm-8")
+                            h2
+                                a(href="/post/" + article._id)
+                                    =article.title
+                            p
+                                =article.content[0]
+            +aside(model, categories)

@@ -1,10 +1,10 @@
 {
-    "parser": "babel-eslint",
+    "parser": "./node_modules/babel-eslint/index.js",
     "env": {
         "browser": true
     },
     "extends": [
-        "google"
+        "./node_modules/eslint-config-google/index.js"
     ],
     "rules": {
         // overrides

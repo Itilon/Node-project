@@ -1,0 +1,20 @@
+mixin navigation
+    header(id="header", class="container")
+        div(class="row")
+            div(id="logo", class="col-sm-4")
+                a(href="/") 
+                    | Who's Blogging Platform
+            nav(id="right-header" class="col-sm-8")
+                ul(id="navigation" class="row cl-effect")
+                    li(class="col-sm-3")
+                        a(id="btn-nav-home" class="home" href="/")
+                            | Home
+                    li(class="col-sm-3")
+                        a(id="btn-nav-about" href="/about")
+                            | About
+                    li(class="col-sm-3")
+                        a(id="btn-nav-login" href="/login")
+                            | Login
+                    li(class="col-sm-3 last")
+                        a(id="btn-nav-contact" href="/contact")
+                            | Contact

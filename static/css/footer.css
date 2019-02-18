@@ -1,0 +1,29 @@
+footer {
+    width: 76%;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+footer p {
+    font-family: cognitype;
+    text-align: center;
+}
+
+/* On smaller screens: */
+
+@media (max-width: 1140px) {
+    footer {
+        width: 88%;
+    }
+}
+@media (max-width: 920px) {
+    footer {
+        width: 96%;
+    }
+}
+@media (max-width: 780px) {
+    footer {
+        width: 98%;
+    }
+}
